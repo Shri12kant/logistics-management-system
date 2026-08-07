@@ -1,16 +1,125 @@
-# React + Vite
+# 🚚 Logistics Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A Full Stack Logistics Management System developed using React.js, Spring Boot, and MySQL. This project helps transportation companies manage customer inquiries through a modern Admin Dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### 🌐 Customer Website
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive Landing Page
+- Hero Section
+- About Section
+- Services Section
+- Fleet Section
+- Testimonials
+- Contact Form
+- Client-side Validation
+- Success & Error Toast Notifications
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### 👨‍💼 Admin Dashboard
+
+- Dashboard Statistics
+- Contact Management
+- Search Contacts
+- Update Contact Status
+- Delete Contact
+- View Customer Details
+- Export Contacts to Excel
+- Responsive Design
+- Modern UI
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- React.js
+- Vite
+- Tailwind CSS
+- Axios
+- React Router DOM
+- React Hot Toast
+
+### Backend
+
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- MySQL
+
+### Tools
+
+- Git
+- GitHub
+- IntelliJ IDEA
+- VS Code
+- Postman
+
+---
+
+## 📁 Project Structure
+
+```
+Frontend
+├── Home Page
+├── Contact Form
+├── Admin Dashboard
+└── Contact Management
+
+Backend
+├── Controller
+├── Service
+├── Repository
+├── Entity
+└── MySQL
+```
+
+---
+
+## 🚀 Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Shri12kant/logistics-management-system.git
+```
+
+### Frontend
+
+```bash
+cd pragya-shipping
+npm install
+npm run dev
+```
+
+### Backend
+
+- Open the Spring Boot project
+- Configure MySQL
+- Run the application
+
+---
+
+## 💡 Future Improvements
+
+- JWT Authentication
+- Role Based Access
+- Email Notifications
+- PDF Export
+- Charts & Analytics
+- Docker Deployment
+- Cloud Deployment
+
+---
+
+## 👨‍💻 Author
+
+**Shrikant Kushwaha**
+
+GitHub: https://github.com/Shri12kant
