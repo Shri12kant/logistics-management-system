@@ -1,0 +1,25 @@
+services:
+  - type: web_service
+    name: pragyashipping-backend
+    env: docker
+    repo: <your-github-repo>
+    branch: main
+    buildCommand: mvn -DskipTests package
+    dockerfilePath: pragyashipping/Dockerfile
+    plan: free
+    envVars:
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+
+  - type: static_site
+    name: pragyashipping-frontend
+    env: static
+    repo: <your-github-repo>
+    branch: main
+    buildCommand: cd pragya-shipping && npm ci && npm run build
+    publishPath: pragya-shipping/dist
+    plan: free
