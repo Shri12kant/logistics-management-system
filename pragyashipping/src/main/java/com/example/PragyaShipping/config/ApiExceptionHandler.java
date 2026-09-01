@@ -17,7 +17,9 @@ public class ApiExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         String lower = msg.toLowerCase();
-        if (lower.contains("invalid email or password")
+        if (lower.contains("temporarily locked") || lower.contains("too many failed")) {
+            status = HttpStatus.TOO_MANY_REQUESTS;
+        } else if (lower.contains("invalid email or password")
                 || lower.contains("current password is incorrect")) {
             status = HttpStatus.UNAUTHORIZED;
         } else if (lower.contains("not found")) {
@@ -31,8 +33,8 @@ public class ApiExceptionHandler {
     public ResponseEntity<Map<String, String>> validation(MethodArgumentNotValidException ex) {
         String msg = ex.getBindingResult().getFieldErrors().stream()
                 .findFirst()
-                .map(err -> err.getField() + " " + err.getDefaultMessage())
-                .orElse("Invalid input");
+                .map(err -> err.getDefaultMessage() != null ? err.getDefaultMessage() : (err.getField() + " is invalid"))
+                .orElse("Invalid input parameters");
         return ResponseEntity.badRequest().body(Map.of("message", msg));
     }
 }

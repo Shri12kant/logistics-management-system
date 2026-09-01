@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.example.PragyaShipping.entity.Admin;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SecurityException;
 
 @Service
 public class JwtService {
@@ -24,55 +28,52 @@ public class JwtService {
         return Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
-    // Generate JWT token with email + role
+    public long getExpirationTime() {
+        return EXPIRATION_TIME;
+    }
+
+    // Generate JWT token with email + role + username
     public String generateToken(Admin admin) {
-
         return Jwts.builder()
-
                 .subject(admin.getEmail())
-
                 .claim("role", admin.getRole())
-
+                .claim("username", admin.getUsername())
                 .issuedAt(new Date())
-
-                .expiration(new Date(
-                        System.currentTimeMillis() + EXPIRATION_TIME
-                ))
-
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(getSigningKey())
-
                 .compact();
+    }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(getSigningKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
     // Extract email from JWT
     public String extractEmail(String token) {
-
-        return Jwts.parser()
-
-                .verifyWith(getSigningKey())
-
-                .build()
-
-                .parseSignedClaims(token)
-
-                .getPayload()
-
-                .getSubject();
+        return extractAllClaims(token).getSubject();
     }
 
     // Extract role from JWT
     public String extractRole(String token) {
+        return extractAllClaims(token).get("role", String.class);
+    }
 
-        return Jwts.parser()
+    // Extract username from JWT
+    public String extractUsername(String token) {
+        return extractAllClaims(token).get("username", String.class);
+    }
 
-                .verifyWith(getSigningKey())
-
-                .build()
-
-                .parseSignedClaims(token)
-
-                .getPayload()
-
-                .get("role", String.class);
+    // Validate token integrity and expiration
+    public boolean isTokenValid(String token) {
+        try {
+            Claims claims = extractAllClaims(token);
+            return claims.getExpiration().after(new Date());
+        } catch (SecurityException | MalformedJwtException | ExpiredJwtException | IllegalArgumentException e) {
+            return false;
+        }
     }
 }

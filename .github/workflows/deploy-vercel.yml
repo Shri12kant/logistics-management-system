@@ -8,7 +8,11 @@ jobs:
   vercel-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository (full history + submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
@@ -18,4 +22,4 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: pragya-shipping
           scope: ${{ secrets.VERCEL_SCOPE }}
-          prod: true
+          vercel-args: '--prod'

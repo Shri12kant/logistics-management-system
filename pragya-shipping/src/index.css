@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --color-ink: #0a1628;
+  --color-ink-soft: #132337;
+  --color-steel: #1b4f72;
+  --color-signal: #e8a317;
+  --color-signal-hover: #d4920f;
+  --color-mist: #e8eef4;
+  --color-fog: #f4f7fa;
+  --color-muted: #5a6b7d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-fog);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.8s ease-out 0.15s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.8s ease-out 0.3s both;
+}
+
+.animate-slide-in {
+  animation: slide-in-right 1s ease-out 0.2s both;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-steel);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-ink);
+  margin-top: 0.6rem;
+}
+
+.section-lead {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 36rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-signal);
+  color: var(--color-ink);
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--color-signal-hover);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.btn-steel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-steel);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-steel:hover {
+  background: #163d59;
+  transform: translateY(-1px);
+}
+
+.input-field {
+  width: 100%;
+  border: 1.5px solid #d5dde6;
+  background: #fff;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+  border-color: var(--color-steel);
+  box-shadow: 0 0 0 3px rgba(27, 79, 114, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-up-delay,
+  .animate-fade-up-delay-2,
+  .animate-slide-in {
+    animation: none;
+  }
+}

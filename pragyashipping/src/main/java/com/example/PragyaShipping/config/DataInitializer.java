@@ -6,7 +6,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.example.PragyaShipping.entity.Admin;
+import com.example.PragyaShipping.entity.QuoteSettings;
 import com.example.PragyaShipping.repository.AdminRepository;
+import com.example.PragyaShipping.repository.QuoteSettingsRepository;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -17,8 +19,17 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private QuoteSettingsRepository quoteSettingsRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        if (quoteSettingsRepository.findById(1L).isEmpty()) {
+            QuoteSettings settings = new QuoteSettings();
+            settings.setId(1L);
+            quoteSettingsRepository.save(settings);
+        }
+
         if (adminRepository.findByEmail("admin@pragyashipping.com").isPresent()
                 || adminRepository.count() > 0) {
             return;

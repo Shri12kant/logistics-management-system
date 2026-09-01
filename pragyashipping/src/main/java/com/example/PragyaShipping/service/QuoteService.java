@@ -1,58 +1,77 @@
 package com.example.PragyaShipping.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.PragyaShipping.entity.QuoteSettings;
+import com.example.PragyaShipping.repository.QuoteSettingsRepository;
 
 @Service
 public class QuoteService {
 
-    // Base rates per kg for different service types
-    private static final double STANDARD_RATE = 50.0;  // per kg
-    private static final double EXPRESS_RATE = 80.0;   // per kg
-    private static final double PREMIUM_RATE = 120.0;   // per kg
+    @Autowired
+    private QuoteSettingsRepository quoteSettingsRepository;
 
-    // Distance multiplier (simplified - in production use actual distance calculation)
-    private static final double BASE_DISTANCE = 100.0;  // km
-    private static final double DISTANCE_MULTIPLIER = 1.5;
+    public QuoteSettings getSettings() {
+        return quoteSettingsRepository.findById(1L).orElseGet(() -> {
+            QuoteSettings defaults = new QuoteSettings();
+            defaults.setId(1L);
+            return quoteSettingsRepository.save(defaults);
+        });
+    }
 
-    // Calculate shipping quote
+    public QuoteSettings updateSettings(QuoteSettings incoming) {
+        QuoteSettings settings = getSettings();
+        if (incoming.getStandardRate() != null && incoming.getStandardRate() > 0) settings.setStandardRate(incoming.getStandardRate());
+        if (incoming.getExpressRate() != null && incoming.getExpressRate() > 0) settings.setExpressRate(incoming.getExpressRate());
+        if (incoming.getPremiumRate() != null && incoming.getPremiumRate() > 0) settings.setPremiumRate(incoming.getPremiumRate());
+        if (incoming.getMinimumCharge() != null && incoming.getMinimumCharge() > 0) settings.setMinimumCharge(incoming.getMinimumCharge());
+        if (incoming.getBaseDistanceKm() != null && incoming.getBaseDistanceKm() >= 0) settings.setBaseDistanceKm(incoming.getBaseDistanceKm());
+        if (incoming.getExtraPerKm() != null && incoming.getExtraPerKm() >= 0) settings.setExtraPerKm(incoming.getExtraPerKm());
+        return quoteSettingsRepository.save(settings);
+    }
+
     public double calculateQuote(Double weight, String serviceType, Double distance) {
         if (weight == null || weight <= 0) {
-            throw new RuntimeException("Invalid weight");
+            throw new RuntimeException("Weight must be greater than 0 kg");
+        }
+        if (weight > 50000) {
+            throw new RuntimeException("For cargo exceeding 50,000 kg (50 tons), please contact us directly for custom freight rates");
+        }
+        if (distance != null) {
+            if (distance < 0) {
+                throw new RuntimeException("Distance cannot be negative");
+            }
+            if (distance > 10000) {
+                throw new RuntimeException("Distance exceeds maximum supported route distance (10,000 km)");
+            }
         }
 
-        if (serviceType == null) {
+        QuoteSettings settings = getSettings();
+        if (serviceType == null || serviceType.isBlank()) {
             serviceType = "STANDARD";
         }
 
-        // Calculate base cost based on weight and service type
-        double baseCost = weight * getRateByServiceType(serviceType);
+        double baseCost = weight * getRateByServiceType(serviceType, settings);
 
-        // Add distance factor
-        double distanceFactor = (distance != null && distance > BASE_DISTANCE) 
-                ? (distance - BASE_DISTANCE) * DISTANCE_MULTIPLIER 
-                : 0;
+        double extraKm = 0;
+        if (distance != null && distance > settings.getBaseDistanceKm()) {
+            extraKm = (distance - settings.getBaseDistanceKm()) * settings.getExtraPerKm();
+        }
 
-        // Total quote
-        double totalQuote = baseCost + distanceFactor;
-
-        // Minimum charge
-        return Math.max(totalQuote, 200.0);  // Minimum ₹200
+        double total = Math.max(baseCost + extraKm, settings.getMinimumCharge());
+        return Math.round(total * 100.0) / 100.0;
     }
 
-    private double getRateByServiceType(String serviceType) {
+    private double getRateByServiceType(String serviceType, QuoteSettings settings) {
         switch (serviceType.toUpperCase()) {
             case "EXPRESS":
-                return EXPRESS_RATE;
+                return settings.getExpressRate();
             case "PREMIUM":
-                return PREMIUM_RATE;
+                return settings.getPremiumRate();
             case "STANDARD":
             default:
-                return STANDARD_RATE;
+                return settings.getStandardRate();
         }
-    }
-
-    // Get service types and their rates
-    public String getServiceTypeInfo() {
-        return "STANDARD: ₹" + STANDARD_RATE + "/kg, EXPRESS: ₹" + EXPRESS_RATE + "/kg, PREMIUM: ₹" + PREMIUM_RATE + "/kg";
     }
 }

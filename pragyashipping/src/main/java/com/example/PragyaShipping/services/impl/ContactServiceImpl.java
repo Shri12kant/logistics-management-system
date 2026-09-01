@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.PragyaShipping.entity.Contact;
 import com.example.PragyaShipping.repository.ContactRepository;
+import com.example.PragyaShipping.security.InputSanitizer;
 import com.example.PragyaShipping.services.ContactService;
 
 @Service
@@ -16,10 +17,29 @@ public class ContactServiceImpl implements ContactService {
     @Autowired
     private ContactRepository contactrepo;
 
+    @Autowired
+    private InputSanitizer inputSanitizer;
+
     // ================= SAVE CONTACT =================
 
     @Override
     public Contact saveContact(Contact contact) {
+        if (contact.getName() != null) {
+            contact.setName(inputSanitizer.sanitizeText(contact.getName()));
+        }
+        if (contact.getEmail() != null) {
+            contact.setEmail(inputSanitizer.sanitizeEmail(contact.getEmail()));
+        }
+        if (contact.getPhoneNumber() != null) {
+            contact.setPhoneNumber(inputSanitizer.sanitizePhone(contact.getPhoneNumber()));
+        }
+        if (contact.getServiceType() != null) {
+            contact.setServiceType(inputSanitizer.sanitizeText(contact.getServiceType()));
+        }
+        if (contact.getMessage() != null) {
+            contact.setMessage(inputSanitizer.sanitizeText(contact.getMessage()));
+        }
+
         if (contact.getStatus() == null || contact.getStatus().isBlank()) {
             contact.setStatus("NEW");
         }
@@ -44,11 +64,9 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void deleteContact(Long id) {
-
         if (!contactrepo.existsById(id)) {
             throw new RuntimeException("Contact not found");
         }
-
         contactrepo.deleteById(id);
     }
 
@@ -56,20 +74,18 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public Contact updateStatus(Long id, String status) {
-
         Contact contact = contactrepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
 
-        if (!status.equals("NEW")
-                && !status.equals("READ")
-                && !status.equals("RESOLVED")) {
+        String normalizedStatus = status != null ? status.trim().toUpperCase() : "";
 
-            throw new RuntimeException(
-                    "Invalid status. Use NEW, READ or RESOLVED");
+        if (!normalizedStatus.equals("NEW")
+                && !normalizedStatus.equals("READ")
+                && !normalizedStatus.equals("RESOLVED")) {
+            throw new RuntimeException("Invalid status. Use NEW, READ or RESOLVED");
         }
 
-        contact.setStatus(status);
-
+        contact.setStatus(normalizedStatus);
         return contactrepo.save(contact);
     }
 

@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
+import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -45,7 +46,7 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(origins);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With", "Accept"));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
 
@@ -63,6 +64,12 @@ public class SecurityConfig {
                 .contentTypeOptions(c -> {})
                 .frameOptions(frame -> frame.deny())
                 .referrerPolicy(ref -> ref.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
+                .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
+                .httpStrictTransportSecurity(hsts -> hsts
+                    .includeSubDomains(true)
+                    .maxAgeInSeconds(31536000)
+                )
+                .permissionsPolicy(p -> p.policy("camera=(), microphone=(), geolocation=()"))
             )
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -73,7 +80,9 @@ public class SecurityConfig {
                 .requestMatchers("/api/admin/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/contact").permitAll()
                 .requestMatchers("/api/shipment/track/**").permitAll()
-                .requestMatchers("/api/quote/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/quote/calculate").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/quote/rates").permitAll()
+                .requestMatchers("/api/quote/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/payment/create-order").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/payment/verify").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/payment/config").permitAll()

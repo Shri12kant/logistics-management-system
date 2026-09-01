@@ -1,28 +1,63 @@
 package com.example.PragyaShipping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.PragyaShipping.entity.QuoteSettings;
+import com.example.PragyaShipping.security.PublicEndpointRateLimiter;
+import com.example.PragyaShipping.service.QuoteService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/quote")
 public class QuoteController {
 
     @Autowired
-    private com.example.PragyaShipping.service.QuoteService quoteService;
+    private QuoteService quoteService;
 
-    // Calculate quote (public for customers)
+    @Autowired
+    private PublicEndpointRateLimiter rateLimiter;
+
+    private String getClientIp(HttpServletRequest request) {
+        String xfHeader = request.getHeader("X-Forwarded-For");
+        if (xfHeader != null && !xfHeader.isEmpty()) {
+            return xfHeader.split(",")[0].trim();
+        }
+        return request.getRemoteAddr();
+    }
+
     @PostMapping("/calculate")
-    public double calculateQuote(@RequestBody QuoteRequest request) {
+    public double calculateQuote(@RequestBody QuoteRequest request, HttpServletRequest httpRequest) {
+        String clientIp = getClientIp(httpRequest);
+
+        // Rate limit: max 60 calculations per minute per IP
+        if (!rateLimiter.allowRequest("quote", clientIp, 60, 60 * 1000L)) {
+            throw new RuntimeException("Too many calculation requests. Please slow down.");
+        }
+
+        if (request == null) {
+            throw new RuntimeException("Quote request body is required");
+        }
+
         return quoteService.calculateQuote(request.getWeight(), request.getServiceType(), request.getDistance());
     }
 
-    // Get service type info (public)
-    @GetMapping("/services")
-    public String getServiceTypeInfo() {
-        return quoteService.getServiceTypeInfo();
+    @GetMapping("/rates")
+    public QuoteSettings getRates() {
+        return quoteService.getSettings();
     }
 
-    // Quote request DTO
+    @PutMapping("/settings")
+    public QuoteSettings updateSettings(@RequestBody QuoteSettings settings) {
+        return quoteService.updateSettings(settings);
+    }
+
     public static class QuoteRequest {
         private Double weight;
         private String serviceType;
