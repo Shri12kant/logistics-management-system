@@ -16,7 +16,7 @@ function About() {
                     <div className="absolute -inset-3 bg-steel/15 rounded-3xl -rotate-2" />
                     <img
                         src={aboutTruck}
-                        alt="About Pragya Shipping"
+                        alt="About PRAGYA SHIPPING AND LOGISTICS"
                         className="relative w-full rounded-2xl object-cover shadow-xl aspect-[4/3]"
                     />
                 </div>
@@ -27,7 +27,7 @@ function About() {
                         Your trusted partner on every route
                     </h2>
                     <p className="section-lead">
-                        Pragya Shipping moves goods across India with care — reliable
+                        PRAGYA SHIPPING AND LOGISTICS moves goods across India with care — reliable
                         fleet, clear communication, and deliveries that respect your timeline.
                     </p>
 

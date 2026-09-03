@@ -24,10 +24,11 @@ export default function AdminLayout({ title, subtitle, actions, children }) {
     const Sidebar = () => (
         <aside className="w-64 bg-ink text-white flex flex-col h-full border-r border-white/5">
             <div className="px-6 py-6 border-b border-white/10">
-                <Link to="/" className="font-display text-xl font-bold">
-                    Pragya<span className="text-signal"> Shipping</span>
+                <Link to="/" className="font-display text-sm font-bold text-white block">
+                    <span>PRAGYA SHIPPING </span>
+                    <span className="text-signal block text-xs tracking-wider">AND LOGISTICS</span>
                 </Link>
-                <p className="text-white/40 text-xs mt-1 tracking-wider uppercase">Admin Panel</p>
+                <p className="text-white/40 text-[11px] mt-1.5 tracking-wider uppercase">Admin Portal</p>
             </div>
 
             <nav className="flex-1 py-4 px-3 space-y-1">

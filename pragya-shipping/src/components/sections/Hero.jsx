@@ -10,15 +10,15 @@ function Hero() {
             >
                 <img
                     src={heroTruck}
-                    alt="Pragya Shipping fleet on the road"
+                    alt="PRAGYA SHIPPING AND LOGISTICS fleet on the road"
                     className="absolute inset-0 w-full h-full object-cover scale-105 animate-slide-in"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/35" />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/40" />
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-28 pb-16 md:pb-24">
-                    <p className="font-display text-signal text-2xl md:text-4xl font-bold tracking-tight animate-fade-up">
-                        Pragya Shipping
+                    <p className="font-display text-signal text-xl md:text-3xl font-bold tracking-tight animate-fade-up">
+                        PRAGYA SHIPPING AND LOGISTICS
                     </p>
 
                     <h1 className="font-display text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mt-3 max-w-3xl animate-fade-up-delay">

@@ -67,8 +67,9 @@ function AdminLogin() {
 
             <div className="relative w-full max-w-md">
                 <div className="text-center mb-8">
-                    <Link to="/" className="font-display text-2xl font-bold text-white">
-                        Pragya<span className="text-signal"> Shipping</span>
+                    <Link to="/" className="font-display text-lg sm:text-xl font-bold text-white block">
+                        <span>PRAGYA SHIPPING </span>
+                        <span className="text-signal">AND LOGISTICS</span>
                     </Link>
                     <div className="flex items-center justify-center gap-1.5 mt-2 text-white/50 text-xs tracking-wide uppercase">
                         <svg className="w-3.5 h-3.5 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor">

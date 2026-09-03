@@ -57,7 +57,7 @@ function Admin() {
         const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
         saveAs(
             new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }),
-            `PragyaShipping_Contacts_${new Date().toISOString().slice(0, 10)}.xlsx`
+            `PragyaShippingAndLogistics_Contacts_${new Date().toISOString().slice(0, 10)}.xlsx`
         );
         toast.success("Excel downloaded securely");
     };

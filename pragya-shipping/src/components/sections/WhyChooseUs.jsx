@@ -34,7 +34,7 @@ function WhyChooseUs() {
                         Why Choose Us
                     </p>
                     <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 leading-tight">
-                        Why businesses stay with Pragya Shipping
+                        Why businesses stay with PRAGYA SHIPPING AND LOGISTICS
                     </h2>
                     <p className="mt-4 text-white/60 text-lg leading-relaxed max-w-xl">
                         Reliability is not a slogan here — it is how every consignment is run.

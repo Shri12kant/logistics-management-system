@@ -54,8 +54,9 @@ function QuoteCalculator() {
         <div className="min-h-screen bg-fog">
             <header className="bg-ink text-white">
                 <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-                    <Link to="/" className="font-display text-xl font-bold">
-                        Pragya<span className="text-signal"> Shipping</span>
+                    <Link to="/" className="font-display text-lg sm:text-xl font-bold flex items-center flex-wrap">
+                        <span>PRAGYA SHIPPING</span>
+                        <span className="text-signal ml-1.5 font-bold">AND LOGISTICS</span>
                     </Link>
                     <Link to="/" className="text-sm text-white/70 hover:text-white transition">
                         ← Back to Home

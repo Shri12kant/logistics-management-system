@@ -21,7 +21,7 @@ export async function startRazorpayPayment({
     customerEmail = "",
     customerPhone = "",
     shipmentId = null,
-    notes = "Pragya Shipping payment",
+    notes = "PRAGYA SHIPPING AND LOGISTICS payment",
     weight = null,
     serviceType = null,
     distance = null
@@ -55,7 +55,7 @@ export async function startRazorpayPayment({
             key: keyId,
             amount: paise,
             currency,
-            name: "Pragya Shipping",
+            name: "PRAGYA SHIPPING AND LOGISTICS",
             description: notes,
             order_id: orderId,
             prefill: {

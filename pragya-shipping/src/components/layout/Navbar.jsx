@@ -29,12 +29,13 @@ export function Navbar() {
             }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16 md:h-18">
+                <div className="flex justify-between items-center h-16 md:h-20">
                     <a
                         href="#home"
-                        className="font-display text-xl md:text-2xl font-extrabold tracking-tight text-white"
+                        className="font-display text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-white flex items-center flex-wrap"
                     >
-                        Pragya<span className="text-signal"> Shipping</span>
+                        <span>PRAGYA SHIPPING</span>
+                        <span className="text-signal ml-1.5 font-bold">AND LOGISTICS</span>
                     </a>
 
                     <div className="hidden lg:flex items-center gap-7">
