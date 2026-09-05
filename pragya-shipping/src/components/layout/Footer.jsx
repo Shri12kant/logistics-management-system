@@ -16,6 +16,10 @@ function Footer() {
                             <strong className="text-white/80">Office:</strong> Room No. 4611, Raigad Galli, Rupa Devi Pada No. 1, Rd. No. 33, Indira Nagar, Wagle Estate, Thane (W), Maharashtra - 400 604.
                         </p>
                         <p>
+                            <strong className="text-white/80">Phone:</strong>{" "}
+                            <a href="tel:+919867189827" className="hover:text-signal transition">+91 98671 89827</a>
+                        </p>
+                        <p>
                             <strong className="text-white/80">Email:</strong>{" "}
                             <a href="mailto:exp.sales@pragyashipping.in" className="hover:text-signal transition">exp.sales@pragyashipping.in</a>
                         </p>

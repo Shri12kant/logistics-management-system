@@ -113,6 +113,14 @@ function Contact() {
                             </p>
                         </div>
                         <div>
+                            <p className="text-xs uppercase tracking-wider text-signal font-bold">Phone Number</p>
+                            <p className="mt-1.5 text-sm text-white/90">
+                                <a href="tel:+919867189827" className="hover:text-signal transition underline-offset-2 hover:underline">
+                                    +91 98671 89827
+                                </a>
+                            </p>
+                        </div>
+                        <div>
                             <p className="text-xs uppercase tracking-wider text-signal font-bold">Email Address</p>
                             <p className="mt-1.5 text-sm text-white/90">
                                 <a href="mailto:exp.sales@pragyashipping.in" className="hover:text-signal transition underline-offset-2 hover:underline">
