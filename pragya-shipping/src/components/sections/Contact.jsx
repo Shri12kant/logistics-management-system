@@ -123,9 +123,7 @@ function Contact() {
                             <option value="">Select service</option>
                             <option value="Road Transportation">Road Transportation</option>
                             <option value="Goods Delivery">Goods Delivery</option>
-                            <option value="Fruit Transport">Fruit Transport</option>
-                            <option value="Full Truck Load">Full Truck Load</option>
-                            <option value="Warehousing">Warehousing</option>
+                            <option value="Customs Clearance">Customs Clearance</option>
                             <option value="Other">Other</option>
                         </select>
                         <textarea rows="5" name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} className="input-field resize-none" required />

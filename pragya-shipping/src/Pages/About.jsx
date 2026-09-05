@@ -5,7 +5,7 @@ function About() {
     const points = [
         "Safe & secure transportation",
         "On-time delivery commitment",
-        "Experienced drivers & crew",
+        "Customs clearance",
         "Round-the-clock support"
     ];
 

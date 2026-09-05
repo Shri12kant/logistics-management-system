@@ -13,16 +13,8 @@ function WhyChooseUs() {
             description: "Connected lanes across cities and states for growing businesses."
         },
         {
-            title: "Experienced Drivers",
-            description: "Skilled drivers who know the roads and respect your freight."
-        },
-        {
             title: "Always Reachable",
             description: "Updates and support when you need status, ETA, or coordination."
-        },
-        {
-            title: "Fair Pricing",
-            description: "Clear quotes without surprise costs — value that scales with you."
         }
     ];
 
@@ -41,7 +33,7 @@ function WhyChooseUs() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
                     {features.map((feature, index) => (
                         <div key={feature.title} className="border-t border-white/15 pt-6">
                             <span className="font-display text-signal text-sm font-bold">

@@ -32,8 +32,7 @@ function Footer() {
                     <ul className="mt-4 space-y-2 text-white/70 text-sm">
                         <li>Road Transport</li>
                         <li>Goods Delivery</li>
-                        <li>Fruit Transport</li>
-                        <li>Warehousing</li>
+                        <li>Customs Clearance</li>
                     </ul>
                 </div>
 

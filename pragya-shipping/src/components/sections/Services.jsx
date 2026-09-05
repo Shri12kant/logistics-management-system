@@ -11,7 +11,7 @@ function Services() {
         },
         {
             title: "Goods Delivery",
-            description: "Commercial cargo handled carefully from warehouse to destination.",
+            description: "Commercial cargo handled carefully from origin to destination.",
             icon: (
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -19,38 +19,11 @@ function Services() {
             )
         },
         {
-            title: "Fruit Transport",
-            description: "Time-sensitive produce moved with care to protect freshness.",
+            title: "Customs Clearance",
+            description: "Seamless documentation, compliance, and swift clearance for consignments.",
             icon: (
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c.5 2.5 2 4 4 4-1 3-3.5 5-7 5s-6-2-7-5c2 0 3.5-1.5 4-4 1 1.5 3 2.5 6 0zM5 17c2 2 5 3 7 3s5-1 7-3" />
-                </svg>
-            )
-        },
-        {
-            title: "Full Truck Load",
-            description: "Dedicated vehicles for bulk consignments and exclusive routes.",
-            icon: (
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h11v10H3V7zm11 3h4l3 3v4h-7v-7zM7 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm10 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                </svg>
-            )
-        },
-        {
-            title: "Warehousing",
-            description: "Secure storage support when your supply chain needs buffer space.",
-            icon: (
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M4 21V9l8-5 8 5v12M8 21v-6h8v6" />
-                </svg>
-            )
-        },
-        {
-            title: "24/7 Support",
-            description: "A team ready to assist with bookings, updates, and coordination.",
-            icon: (
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2.5l1.5 4-2 1.5a12 12 0 005.5 5.5L14 12.5l4 1.5V18a2 2 0 01-2 2A15 15 0 013 5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
             )
         }
@@ -63,11 +36,11 @@ function Services() {
                     <p className="section-label">Our Services</p>
                     <h2 className="section-title">Built for real logistics needs</h2>
                     <p className="section-lead">
-                        From local drops to long-haul FTLs — choose the service that fits your cargo.
+                        Fast, dependable transport solutions tailored to your cargo requirements.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
                     {services.map((service) => (
                         <article
                             key={service.title}
