@@ -9,7 +9,6 @@ function Contact() {
         name: "",
         subject: "",
         email: "",
-        serviceType: "",
         destinationPort: "",
         message: ""
     });
@@ -38,10 +37,6 @@ function Contact() {
             return toast.error("Please enter a valid email address");
         }
 
-        if (formData.serviceType.trim() === "") {
-            return toast.error("Please select a service type");
-        }
-
         if (!formData.destinationPort.trim()) {
             return toast.error("Please enter destination port");
         }
@@ -59,7 +54,7 @@ function Contact() {
                 name: formData.name.trim(),
                 email: formData.email.trim(),
                 phoneNumber: "+91 9999999999",
-                serviceType: formData.serviceType,
+                serviceType: "Quick Quote Request",
                 message: combinedMessage
             };
 
@@ -74,7 +69,6 @@ function Contact() {
                 name: "",
                 subject: "",
                 email: "",
-                serviceType: "",
                 destinationPort: "",
                 message: ""
             });
@@ -170,24 +164,6 @@ function Contact() {
                                 className="input-field-dark"
                                 required
                             />
-                        </div>
-
-                        <div>
-                            <select
-                                name="serviceType"
-                                value={formData.serviceType}
-                                onChange={handleChange}
-                                className="input-field-dark"
-                                required
-                            >
-                                <option value="">Select Service</option>
-                                <option value="Road Transportation">Road Transportation</option>
-                                <option value="Ocean Freight">Ocean Freight</option>
-                                <option value="Customs Clearance">Customs Clearance</option>
-                                <option value="Railway Freight">Railway Freight</option>
-                                <option value="Project Cargo">Project Cargo</option>
-                                <option value="Other">Other</option>
-                            </select>
                         </div>
 
                         <div>
