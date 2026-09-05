@@ -1,6 +1,7 @@
 import { Navbar } from "../components/layout/Navbar.jsx";
 import Hero from "../components/sections/Hero.jsx";
 import About from "../Pages/About.jsx";
+import RailwayFreight from "../components/sections/RailwayFreight.jsx";
 import Services from "../components/sections/Services.jsx";
 import Mission from "../components/sections/Mission.jsx";
 import WhyChooseUs from "../components/sections/WhyChooseUs.jsx";
@@ -14,6 +15,7 @@ function Home() {
             <Navbar />
             <Hero />
             <About />
+            <RailwayFreight />
             <Services />
             <Mission />
             <WhyChooseUs />

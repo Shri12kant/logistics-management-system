@@ -20,7 +20,9 @@ function Footer() {
                     <ul className="mt-4 space-y-2 text-white/70 text-sm">
                         <li><a href="#home" className="hover:text-signal transition">Home</a></li>
                         <li><a href="#about" className="hover:text-signal transition">About</a></li>
+                        <li><a href="#railway" className="hover:text-signal transition">Railway</a></li>
                         <li><a href="#services" className="hover:text-signal transition">Services</a></li>
+                        <li><a href="#mission" className="hover:text-signal transition">Mission & Projects</a></li>
                         <li><a href="#contact" className="hover:text-signal transition">Contact</a></li>
                     </ul>
                 </div>
