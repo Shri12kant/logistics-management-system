@@ -2,6 +2,7 @@ import { Navbar } from "../components/layout/Navbar.jsx";
 import Hero from "../components/sections/Hero.jsx";
 import About from "../Pages/About.jsx";
 import Services from "../components/sections/Services.jsx";
+import Mission from "../components/sections/Mission.jsx";
 import WhyChooseUs from "../components/sections/WhyChooseUs.jsx";
 import WorkingProcess from "../components/sections/WorkingProcess.jsx";
 import Contact from "../components/sections/Contact.jsx";
@@ -14,6 +15,7 @@ function Home() {
             <Hero />
             <About />
             <Services />
+            <Mission />
             <WhyChooseUs />
             <WorkingProcess />
             <Contact />

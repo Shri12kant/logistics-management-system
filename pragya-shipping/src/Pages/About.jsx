@@ -3,10 +3,11 @@ import aboutTruck from "../assets/About-truck.webp";
 
 function About() {
     const points = [
-        "Safe & secure transportation",
-        "On-time delivery commitment",
-        "Customs clearance",
-        "Round-the-clock support"
+        "Railway Transportation & Bulk Freight",
+        "Ocean Shipping & Sea Freight Handling",
+        "Customs Clearance & Documentation",
+        "Safe & Secure Pan-India Road Transport",
+        "Round-the-clock Operational Support"
     ];
 
     return (
@@ -24,27 +25,32 @@ function About() {
                 <div>
                     <p className="section-label">About Us</p>
                     <h2 className="section-title">
-                        Your trusted partner on every route
+                        Multimodal Logistics & Freight Solutions
                     </h2>
                     <p className="section-lead">
-                        PRAGYA SHIPPING AND LOGISTICS moves goods across India with care — reliable
-                        fleet, clear communication, and deliveries that respect your timeline.
+                        PRAGYA SHIPPING AND LOGISTICS provides end-to-end multimodal transport across India and beyond — 
+                        seamlessly connecting Road, Rail, Ocean Shipping, and Customs Clearance to keep your supply chain moving.
                     </p>
 
-                    <ul className="mt-8 space-y-3">
+                    <ul className="mt-8 space-y-3.5">
                         {points.map((point) => (
                             <li key={point} className="flex items-start gap-3 text-ink">
-                                <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/20 text-steel text-xs font-bold">
+                                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/20 text-steel text-xs font-bold">
                                     ✓
                                 </span>
-                                <span className="text-[1.05rem]">{point}</span>
+                                <span className="text-[1.05rem] font-medium">{point}</span>
                             </li>
                         ))}
                     </ul>
 
-                    <Link to="/quote" className="btn-steel mt-9">
-                        Request a Quote
-                    </Link>
+                    <div className="mt-9 flex flex-wrap gap-4">
+                        <Link to="/quote" className="btn-steel">
+                            Request a Quote
+                        </Link>
+                        <a href="#mission" className="btn-primary">
+                            Our Mission & Project Cargo
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
