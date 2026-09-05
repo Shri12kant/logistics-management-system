@@ -29,9 +29,9 @@ function Hero() {
                 </p>
 
                 <div className="mt-9 flex flex-wrap gap-4 animate-fade-up-delay-2">
-                    <Link to="/quote" className="btn-primary">
-                        Get a Quote
-                    </Link>
+                    <a href="#contact" className="btn-primary">
+                        Request a Quick Quote
+                    </a>
                     <a href="#contact" className="btn-ghost">
                         Contact Us
                     </a>

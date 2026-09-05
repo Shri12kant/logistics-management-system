@@ -39,10 +39,8 @@ public class Contact {
     @Column(nullable = false, length = 2000)
     private String message;
 
-    @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^[0-9+() -]{7,20}$", message = "Invalid phone number format")
-    @Column(nullable = false, length = 25)
-    private String phoneNumber;
+    @Column(nullable = true, length = 25)
+    private String phoneNumber = "N/A";
 
     @Column(nullable = false, length = 20)
     private String status = "NEW";

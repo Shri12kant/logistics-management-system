@@ -51,12 +51,9 @@ export function Navbar() {
                         ))}
                         <Link
                             to="/track"
-                            className="text-sm font-semibold text-white/90 hover:text-signal transition"
+                            className="btn-primary text-sm !py-2 !px-4"
                         >
-                            Track
-                        </Link>
-                        <Link to="/quote" className="btn-primary text-sm !py-2.5 !px-4">
-                            Get Quote
+                            Track Shipment
                         </Link>
                     </div>
 
@@ -92,16 +89,9 @@ export function Navbar() {
                     <Link
                         to="/track"
                         onClick={() => setOpen(false)}
-                        className="block text-signal font-semibold"
+                        className="btn-primary w-full text-center block"
                     >
                         Track Shipment
-                    </Link>
-                    <Link
-                        to="/quote"
-                        onClick={() => setOpen(false)}
-                        className="btn-primary w-full"
-                    >
-                        Get Quote
                     </Link>
                 </div>
             )}

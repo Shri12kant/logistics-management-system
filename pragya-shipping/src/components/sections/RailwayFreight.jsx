@@ -52,9 +52,9 @@ function RailwayFreight() {
                         <a href="#contact" className="btn-primary">
                             Enquire for Rail Freight
                         </a>
-                        <Link to="/quote" className="btn-ghost">
-                            Calculate Quote
-                        </Link>
+                        <a href="#contact" className="btn-ghost">
+                            Request Quote
+                        </a>
                     </div>
                 </div>
 

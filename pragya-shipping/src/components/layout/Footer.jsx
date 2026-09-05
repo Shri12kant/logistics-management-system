@@ -49,12 +49,12 @@ function Footer() {
 
                 <div>
                     <h3 className="font-display font-bold text-sm tracking-wider uppercase text-white/40">
-                        Tools
+                        Tools & Links
                     </h3>
                     <ul className="mt-4 space-y-2 text-white/70 text-sm">
                         <li><Link to="/track" className="hover:text-signal transition">Track Shipment</Link></li>
-                        <li><Link to="/quote" className="hover:text-signal transition">Get Quote</Link></li>
-                        <li><Link to="/admin/login" className="hover:text-signal transition">Admin</Link></li>
+                        <li><a href="#contact" className="hover:text-signal transition">Request A Quote</a></li>
+                        <li><Link to="/admin/login" className="hover:text-signal transition">Admin Portal</Link></li>
                     </ul>
                 </div>
             </div>
