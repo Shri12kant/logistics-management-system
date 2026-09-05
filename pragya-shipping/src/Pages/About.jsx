@@ -9,15 +9,15 @@ function About() {
     ];
 
     return (
-        <section id="about" className="scroll-mt-24 py-20 md:py-28 bg-fog">
+        <section id="about" className="scroll-mt-24 py-20 md:py-28 bg-ink-soft text-white border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
                 {/* Visual Imagery - Clean Standalone Road Fleet Image */}
                 <div className="relative">
-                    <div className="absolute -inset-3 bg-steel/15 rounded-3xl -rotate-2" />
+                    <div className="absolute -inset-3 bg-signal/10 rounded-3xl -rotate-2" />
                     <img
                         src={aboutTruck}
                         alt="Road Transport Fleet by PRAGYA SHIPPING AND LOGISTICS"
-                        className="relative w-full rounded-2xl object-cover shadow-xl aspect-[4/3]"
+                        className="relative w-full rounded-2xl object-cover shadow-2xl aspect-[4/3] border border-white/10"
                     />
                 </div>
 
@@ -33,8 +33,8 @@ function About() {
 
                     <ul className="mt-8 space-y-3.5">
                         {points.map((point) => (
-                            <li key={point} className="flex items-start gap-3 text-ink">
-                                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/20 text-steel text-xs font-bold">
+                            <li key={point} className="flex items-start gap-3 text-white/90">
+                                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/20 text-signal text-xs font-bold">
                                     ✓
                                 </span>
                                 <span className="text-[1.05rem] font-medium">{point}</span>
@@ -43,10 +43,10 @@ function About() {
                     </ul>
 
                     <div className="mt-9 flex flex-wrap gap-4">
-                        <Link to="/quote" className="btn-steel">
+                        <Link to="/quote" className="btn-primary">
                             Request a Quote
                         </Link>
-                        <a href="#railway" className="btn-primary">
+                        <a href="#railway" className="btn-ghost">
                             Railway Freight Services
                         </a>
                     </div>

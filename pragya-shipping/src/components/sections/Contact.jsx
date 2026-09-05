@@ -113,7 +113,7 @@ function Contact() {
 
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white text-ink p-8 md:p-10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]"
+                    className="bg-white/[0.04] border border-white/10 text-white p-8 md:p-10 shadow-2xl rounded-2xl backdrop-blur-md"
                 >
                     <div className="space-y-4">
                         <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="input-field" required />

@@ -11,7 +11,7 @@ import Footer from "../components/layout/Footer.jsx";
 
 function Home() {
     return (
-        <div className="bg-fog">
+        <div className="bg-ink text-white min-h-screen selection:bg-signal selection:text-ink">
             <Navbar />
             <Hero />
             <About />

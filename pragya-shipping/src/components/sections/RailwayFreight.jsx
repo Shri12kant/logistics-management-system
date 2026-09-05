@@ -22,7 +22,7 @@ function RailwayFreight() {
     ];
 
     return (
-        <section id="railway" className="scroll-mt-24 py-20 md:py-28 bg-white border-t border-mist">
+        <section id="railway" className="scroll-mt-24 py-20 md:py-28 bg-ink text-white border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 {/* Left Content */}
                 <div className="order-2 lg:order-1">
@@ -37,11 +37,11 @@ function RailwayFreight() {
 
                     <div className="grid sm:grid-cols-2 gap-5 mt-8">
                         {railHighlights.map((item) => (
-                            <div key={item.title} className="bg-fog p-5 border-l-4 border-signal">
-                                <h4 className="font-display font-bold text-ink text-base">
+                            <div key={item.title} className="bg-white/[0.04] border border-white/10 p-5 rounded-lg border-l-4 border-l-signal">
+                                <h4 className="font-display font-bold text-white text-base">
                                     {item.title}
                                 </h4>
-                                <p className="text-muted text-xs sm:text-sm mt-2 leading-relaxed">
+                                <p className="text-white/60 text-xs sm:text-sm mt-2 leading-relaxed">
                                     {item.desc}
                                 </p>
                             </div>
@@ -52,7 +52,7 @@ function RailwayFreight() {
                         <a href="#contact" className="btn-primary">
                             Enquire for Rail Freight
                         </a>
-                        <Link to="/quote" className="btn-steel">
+                        <Link to="/quote" className="btn-ghost">
                             Calculate Quote
                         </Link>
                     </div>
@@ -64,7 +64,7 @@ function RailwayFreight() {
                     <img
                         src={trainCargo}
                         alt="Railway freight cargo transportation by PRAGYA SHIPPING AND LOGISTICS"
-                        className="relative w-full rounded-2xl object-cover shadow-2xl aspect-[4/3]"
+                        className="relative w-full rounded-2xl object-cover shadow-2xl aspect-[4/3] border border-white/10"
                     />
                 </div>
             </div>

@@ -3,7 +3,7 @@ import cargoIndia from "../../assets/cargoIndia.jpg";
 
 function Mission() {
     return (
-        <section id="mission" className="py-20 md:py-28 bg-white border-y border-mist">
+        <section id="mission" className="py-20 md:py-28 bg-ink text-white border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 space-y-20">
                 {/* Mission Header & Core Values with Ship Cargo Image */}
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -18,29 +18,29 @@ function Mission() {
                         </p>
 
                         <div className="mt-8 grid sm:grid-cols-2 gap-6">
-                            <div className="bg-fog p-5 border-l-4 border-signal">
-                                <h4 className="font-display font-bold text-ink text-lg">Safety & Integrity</h4>
-                                <p className="text-muted text-sm mt-2">Zero-compromise cargo handling, vetted operators, and strict compliance.</p>
+                            <div className="bg-white/[0.04] p-5 border border-white/10 rounded-lg border-l-4 border-l-signal">
+                                <h4 className="font-display font-bold text-white text-lg">Safety & Integrity</h4>
+                                <p className="text-white/60 text-sm mt-2">Zero-compromise cargo handling, vetted operators, and strict regulatory compliance.</p>
                             </div>
-                            <div className="bg-fog p-5 border-l-4 border-steel">
-                                <h4 className="font-display font-bold text-ink text-lg">Multimodal Agility</h4>
-                                <p className="text-muted text-sm mt-2">Seamless integration across highways, rail freight corridors, and major ports.</p>
+                            <div className="bg-white/[0.04] p-5 border border-white/10 rounded-lg border-l-4 border-l-steel">
+                                <h4 className="font-display font-bold text-white text-lg">Multimodal Agility</h4>
+                                <p className="text-white/60 text-sm mt-2">Seamless integration across national highways, rail freight corridors, and major ports.</p>
                             </div>
                         </div>
                     </div>
 
                     <div className="relative">
-                        <div className="absolute -inset-4 bg-ink/5 rounded-3xl rotate-1" />
+                        <div className="absolute -inset-4 bg-signal/10 rounded-3xl rotate-1" />
                         <img
                             src={shipCargo}
                             alt="Ship cargo and ocean freight logistics by PRAGYA SHIPPING AND LOGISTICS"
-                            className="relative w-full rounded-2xl object-cover shadow-xl aspect-[16/10]"
+                            className="relative w-full rounded-2xl object-cover shadow-2xl aspect-[16/10] border border-white/10"
                         />
                     </div>
                 </div>
 
                 {/* Project Cargo Specialized Area with cargoIndia image & text overlay */}
-                <div className="bg-ink text-white shadow-2xl relative overflow-hidden rounded-2xl">
+                <div className="bg-ink-soft text-white shadow-2xl relative overflow-hidden rounded-2xl border border-white/10">
                     <div className="relative min-h-[420px] md:min-h-[480px] flex items-center">
                         {/* Background Image */}
                         <img
@@ -49,8 +49,8 @@ function Mission() {
                             className="absolute inset-0 w-full h-full object-cover"
                         />
                         {/* Dark Gradient Overlay for Readability */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/40 md:to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40 md:to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
 
                         {/* Text Content Over Image */}
                         <div className="relative z-10 p-8 md:p-14 max-w-2xl space-y-5">

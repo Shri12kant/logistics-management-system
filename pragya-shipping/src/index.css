@@ -4,13 +4,13 @@
   --font-display: "Syne", sans-serif;
   --font-sans: "DM Sans", sans-serif;
   --color-ink: #0a1628;
-  --color-ink-soft: #132337;
+  --color-ink-soft: #112138;
   --color-steel: #1b4f72;
   --color-signal: #e8a317;
   --color-signal-hover: #d4920f;
-  --color-mist: #e8eef4;
-  --color-fog: #f4f7fa;
-  --color-muted: #5a6b7d;
+  --color-mist: #1a2d47;
+  --color-fog: #0a1628;
+  --color-muted: #8ca3be;
 }
 
 html {
@@ -19,8 +19,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-ink);
-  background: var(--color-fog);
+  color: #ffffff;
+  background: var(--color-ink);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -76,7 +76,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-steel);
+  color: var(--color-signal);
 }
 
 .section-title {
@@ -84,13 +84,13 @@ body {
   font-size: clamp(1.85rem, 4vw, 2.75rem);
   font-weight: 700;
   line-height: 1.15;
-  color: var(--color-ink);
+  color: #ffffff;
   margin-top: 0.6rem;
 }
 
 .section-lead {
   margin-top: 1rem;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.70);
   font-size: 1.05rem;
   line-height: 1.7;
   max-width: 36rem;
@@ -101,7 +101,7 @@ body {
   align-items: center;
   justify-content: center;
   background: var(--color-signal);
-  color: var(--color-ink);
+  color: #0a1628;
   font-weight: 700;
   padding: 0.85rem 1.6rem;
   border-radius: 0.5rem;
@@ -117,7 +117,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   font-weight: 600;
   padding: 0.85rem 1.6rem;
@@ -134,32 +134,45 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-steel);
+  background: #1e3a5f;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   font-weight: 600;
   padding: 0.85rem 1.6rem;
   border-radius: 0.5rem;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .btn-steel:hover {
-  background: #163d59;
+  background: #254a78;
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
 }
 
 .input-field {
   width: 100%;
-  border: 1.5px solid #d5dde6;
-  background: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
   padding: 0.85rem 1rem;
   border-radius: 0.5rem;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .input-field:focus {
-  border-color: var(--color-steel);
-  box-shadow: 0 0 0 3px rgba(27, 79, 114, 0.15);
+  border-color: var(--color-signal);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(232, 163, 23, 0.2);
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+select.input-field option {
+  background: #112138;
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {
