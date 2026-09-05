@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import shipCargo from "../../assets/Ship cargo.jpg";
 
 function Mission() {
     const projectCargoFeatures = [
@@ -23,7 +23,7 @@ function Mission() {
     return (
         <section id="mission" className="py-20 md:py-28 bg-white border-y border-mist">
             <div className="max-w-7xl mx-auto px-6 space-y-20">
-                {/* Mission Header & Core Values */}
+                {/* Mission Header & Core Values with Ship Cargo Image */}
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <p className="section-label">Our Mission</p>
@@ -50,10 +50,9 @@ function Mission() {
                     <div className="relative">
                         <div className="absolute -inset-4 bg-ink/5 rounded-3xl rotate-1" />
                         <img
-                            src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"
-                            alt="Container ship and ocean freight logistics"
+                            src={shipCargo}
+                            alt="Ship cargo and ocean freight logistics by PRAGYA SHIPPING AND LOGISTICS"
                             className="relative w-full rounded-2xl object-cover shadow-xl aspect-[16/10]"
-                            loading="lazy"
                         />
                     </div>
                 </div>

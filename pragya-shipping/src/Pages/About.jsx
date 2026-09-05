@@ -1,25 +1,38 @@
 import { Link } from "react-router-dom";
+import trainCargo from "../assets/traincargo.jpg";
 import aboutTruck from "../assets/About-truck.webp";
 
 function About() {
     const points = [
-        "Railway Transportation & Bulk Freight",
-        "Ocean Shipping & Sea Freight Handling",
-        "Customs Clearance & Documentation",
-        "Safe & Secure Pan-India Road Transport",
-        "Round-the-clock Operational Support"
+        "Railway Transportation & Bulk Freight Corridors",
+        "Ocean Shipping & Port-to-Port Container Handling",
+        "Customs Clearance, Documentation & Regulatory Compliance",
+        "Safe & Reliable Pan-India Road Transportation",
+        "Round-the-clock Operational Tracking & Support"
     ];
 
     return (
         <section id="about" className="scroll-mt-24 py-20 md:py-28 bg-fog">
             <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                {/* Visual Imagery - Railway & Road Freight */}
                 <div className="relative">
                     <div className="absolute -inset-3 bg-steel/15 rounded-3xl -rotate-2" />
                     <img
-                        src={aboutTruck}
-                        alt="About PRAGYA SHIPPING AND LOGISTICS"
+                        src={trainCargo}
+                        alt="Railway Cargo and Multimodal Logistics by PRAGYA SHIPPING AND LOGISTICS"
                         className="relative w-full rounded-2xl object-cover shadow-xl aspect-[4/3]"
                     />
+                    <div className="absolute -bottom-6 -right-6 hidden sm:flex items-center gap-3 bg-white p-3.5 shadow-2xl rounded-xl border border-mist max-w-xs">
+                        <img
+                            src={aboutTruck}
+                            alt="Road transport fleet"
+                            className="w-16 h-12 object-cover rounded-lg"
+                        />
+                        <div>
+                            <p className="text-xs font-bold text-ink uppercase tracking-wider">Rail & Road Sync</p>
+                            <p className="text-[11px] text-muted">Door-to-door multimodal freight</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div>
