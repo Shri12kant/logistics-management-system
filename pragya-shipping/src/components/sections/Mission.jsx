@@ -66,7 +66,7 @@ function Mission() {
                             Specialized Capability
                         </p>
                         <h3 className="font-display text-3xl md:text-4xl font-extrabold mt-3 text-white">
-                            Project Cargo & Heavy Lift Logistics
+                            Project Cargo
                         </h3>
                         <p className="mt-4 text-white/70 text-lg leading-relaxed">
                             Complex, oversized, or high-value industrial freight requires dedicated engineering and specialized equipment. 
