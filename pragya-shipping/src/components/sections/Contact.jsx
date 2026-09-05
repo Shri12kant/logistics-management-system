@@ -103,19 +103,12 @@ function Contact() {
                             </p>
                         </div>
                         <div>
-                            <p className="text-xs uppercase tracking-wider text-signal font-bold">Official Emails</p>
-                            <div className="mt-1.5 space-y-1 text-sm text-white/90">
-                                <p>
-                                    <a href="mailto:pragyashpng.log@gmail.com" className="hover:text-signal transition underline-offset-2 hover:underline">
-                                        pragyashpng.log@gmail.com
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href="mailto:vijaydhr.dubey@gmail.com" className="hover:text-signal transition underline-offset-2 hover:underline">
-                                        vijaydhr.dubey@gmail.com
-                                    </a>
-                                </p>
-                            </div>
+                            <p className="text-xs uppercase tracking-wider text-signal font-bold">Email Address</p>
+                            <p className="mt-1.5 text-sm text-white/90">
+                                <a href="mailto:exp.sales@pragyashipping.in" className="hover:text-signal transition underline-offset-2 hover:underline">
+                                    exp.sales@pragyashipping.in
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

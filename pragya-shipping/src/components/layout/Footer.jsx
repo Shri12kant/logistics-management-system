@@ -15,9 +15,9 @@ function Footer() {
                         <p className="leading-relaxed">
                             <strong className="text-white/80">Office:</strong> Room No. 4611, Raigad Galli, Rupa Devi Pada No. 1, Rd. No. 33, Indira Nagar, Wagle Estate, Thane (W), Maharashtra - 400 604.
                         </p>
-                        <p className="space-y-0.5">
+                        <p>
                             <strong className="text-white/80">Email:</strong>{" "}
-                            <a href="mailto:pragyashpng.log@gmail.com" className="hover:text-signal transition">pragyashpng.log@gmail.com</a>
+                            <a href="mailto:exp.sales@pragyashipping.in" className="hover:text-signal transition">exp.sales@pragyashipping.in</a>
                         </p>
                     </div>
                 </div>
