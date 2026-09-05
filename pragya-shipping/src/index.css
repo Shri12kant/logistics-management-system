@@ -8,9 +8,9 @@
   --color-steel: #1b4f72;
   --color-signal: #e8a317;
   --color-signal-hover: #d4920f;
-  --color-mist: #1a2d47;
-  --color-fog: #0a1628;
-  --color-muted: #8ca3be;
+  --color-mist: #e2e8f0;
+  --color-fog: #f8fafc;
+  --color-muted: #64748b;
 }
 
 html {
@@ -149,7 +149,35 @@ body {
   transform: translateY(-1px);
 }
 
+/* Crisp Clean Input for Admin & White Cards */
 .input-field {
+  width: 100%;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+  border-color: #1b4f72;
+  box-shadow: 0 0 0 3px rgba(27, 79, 114, 0.15);
+}
+
+.input-field::placeholder {
+  color: #94a3b8;
+}
+
+select.input-field option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* Dark Input for Public Dark Landing Forms */
+.input-field-dark {
   width: 100%;
   border: 1.5px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.05);
@@ -157,20 +185,21 @@ body {
   padding: 0.85rem 1rem;
   border-radius: 0.5rem;
   outline: none;
+  font-size: 0.95rem;
   transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
-.input-field:focus {
+.input-field-dark:focus {
   border-color: var(--color-signal);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 0 3px rgba(232, 163, 23, 0.2);
 }
 
-.input-field::placeholder {
+.input-field-dark::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
 
-select.input-field option {
+select.input-field-dark option {
   background: #112138;
   color: #ffffff;
 }

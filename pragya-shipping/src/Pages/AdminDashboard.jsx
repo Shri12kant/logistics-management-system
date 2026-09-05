@@ -31,9 +31,9 @@ function AdminDashboard() {
     }, []);
 
     const cards = [
-        { title: "Total Contacts", value: dashboard.totalContacts, accent: "text-ink" },
-        { title: "New Messages", value: dashboard.newContacts, accent: "text-signal" },
-        { title: "Read", value: dashboard.readContacts, accent: "text-steel" },
+        { title: "Total Contacts", value: dashboard.totalContacts, accent: "text-slate-900" },
+        { title: "New Messages", value: dashboard.newContacts, accent: "text-amber-600" },
+        { title: "Read", value: dashboard.readContacts, accent: "text-blue-600" },
         { title: "Resolved", value: dashboard.resolvedContacts, accent: "text-emerald-600" }
     ];
 
@@ -45,16 +45,20 @@ function AdminDashboard() {
             title="Dashboard"
             subtitle="Overview of inquiries and system activity"
             actions={
-                <button type="button" onClick={fetchDashboard} className="btn-steel text-sm !py-2.5">
+                <button
+                    type="button"
+                    onClick={fetchDashboard}
+                    className="bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold px-4 py-2 rounded-lg text-sm shadow-xs transition"
+                >
                     Refresh
                 </button>
             }
         >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 {cards.map((card) => (
-                    <div key={card.title} className="bg-white border border-mist p-5 shadow-sm">
-                        <p className="text-muted text-xs uppercase tracking-wider font-semibold">{card.title}</p>
-                        <p className={`font-display text-4xl font-bold mt-3 ${card.accent}`}>
+                    <div key={card.title} className="bg-white border border-slate-200 p-6 rounded-xl shadow-xs">
+                        <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">{card.title}</p>
+                        <p className={`font-display text-4xl font-extrabold mt-3 ${card.accent}`}>
                             {loading ? "—" : card.value}
                         </p>
                     </div>
@@ -62,22 +66,22 @@ function AdminDashboard() {
             </div>
 
             <div className="grid xl:grid-cols-3 gap-6">
-                <div className="xl:col-span-2 bg-white border border-mist p-6 shadow-sm">
-                    <h2 className="font-display text-xl font-bold text-ink">Contact funnel</h2>
-                    <p className="text-muted text-sm mt-1">How messages move through your inbox</p>
+                <div className="xl:col-span-2 bg-white border border-slate-200 p-6 rounded-xl shadow-xs">
+                    <h2 className="font-display text-xl font-bold text-slate-900">Contact funnel</h2>
+                    <p className="text-slate-500 text-sm mt-1">How messages move through your inbox</p>
 
                     <div className="mt-8 space-y-6">
                         {[
-                            { label: "New", value: dashboard.newContacts, color: "bg-signal" },
-                            { label: "Read", value: dashboard.readContacts, color: "bg-steel" },
+                            { label: "New", value: dashboard.newContacts, color: "bg-amber-500" },
+                            { label: "Read", value: dashboard.readContacts, color: "bg-blue-600" },
                             { label: "Resolved", value: dashboard.resolvedContacts, color: "bg-emerald-500" }
                         ].map((row) => (
                             <div key={row.label}>
                                 <div className="flex justify-between text-sm mb-2">
-                                    <span className="font-medium text-ink">{row.label}</span>
-                                    <span className="font-bold">{loading ? "—" : row.value}</span>
+                                    <span className="font-semibold text-slate-800">{row.label}</span>
+                                    <span className="font-bold text-slate-900">{loading ? "—" : row.value}</span>
                                 </div>
-                                <div className="h-2 bg-mist overflow-hidden">
+                                <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
                                     <div className={`h-full ${row.color}`} style={{ width: pct(row.value) }} />
                                 </div>
                             </div>
@@ -86,44 +90,44 @@ function AdminDashboard() {
                 </div>
 
                 <div className="space-y-6">
-                    <div className="bg-ink text-white p-6">
-                        <h2 className="font-display text-lg font-bold">Quick actions</h2>
+                    <div className="bg-[#0a1628] text-white p-6 rounded-xl shadow-xs">
+                        <h2 className="font-display text-lg font-bold text-white">Quick actions</h2>
                         <div className="mt-5 space-y-2">
                             <button
                                 type="button"
                                 onClick={() => navigate("/admin/shipments")}
-                                className="w-full text-left px-4 py-3 bg-white/5 hover:bg-signal hover:text-ink transition text-sm font-medium"
+                                className="w-full text-left px-4 py-3 bg-white/10 hover:bg-signal hover:text-[#0a1628] rounded-lg transition text-sm font-semibold text-slate-100"
                             >
                                 Manage shipments →
                             </button>
                             <button
                                 type="button"
                                 onClick={() => navigate("/admin/contacts")}
-                                className="w-full text-left px-4 py-3 bg-white/5 hover:bg-signal hover:text-ink transition text-sm font-medium"
+                                className="w-full text-left px-4 py-3 bg-white/10 hover:bg-signal hover:text-[#0a1628] rounded-lg transition text-sm font-semibold text-slate-100"
                             >
                                 View contacts →
                             </button>
                             <button
                                 type="button"
                                 onClick={() => navigate("/admin/admin-management")}
-                                className="w-full text-left px-4 py-3 bg-white/5 hover:bg-signal hover:text-ink transition text-sm font-medium"
+                                className="w-full text-left px-4 py-3 bg-white/10 hover:bg-signal hover:text-[#0a1628] rounded-lg transition text-sm font-semibold text-slate-100"
                             >
                                 Manage admins →
                             </button>
                         </div>
                     </div>
 
-                    <div className="bg-white border border-mist p-6 shadow-sm">
-                        <h2 className="font-display text-lg font-bold text-ink">System</h2>
+                    <div className="bg-white border border-slate-200 p-6 rounded-xl shadow-xs">
+                        <h2 className="font-display text-lg font-bold text-slate-900">System</h2>
                         <ul className="mt-4 space-y-3 text-sm">
                             {[
                                 ["API", "Online"],
                                 ["Database", "Connected"],
                                 ["Auth", "JWT Active"]
                             ].map(([k, v]) => (
-                                <li key={k} className="flex justify-between">
-                                    <span className="text-muted">{k}</span>
-                                    <span className="font-semibold text-emerald-600">{v}</span>
+                                <li key={k} className="flex justify-between items-center py-1">
+                                    <span className="text-slate-600 font-medium">{k}</span>
+                                    <span className="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full text-xs">{v}</span>
                                 </li>
                             ))}
                         </ul>

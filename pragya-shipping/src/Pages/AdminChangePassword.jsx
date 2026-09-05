@@ -56,23 +56,28 @@ function AdminChangePassword() {
     return (
         <AdminLayout title="Change Password" subtitle="Update your admin account credentials securely">
             <div className="max-w-xl">
-                <form onSubmit={submit} className="bg-white border border-mist p-6 md:p-8 space-y-5 shadow-sm">
+                <form onSubmit={submit} className="bg-white border border-slate-200 p-8 rounded-xl shadow-xs space-y-5 text-slate-900">
+                    <div className="border-b border-slate-100 pb-4 mb-2">
+                        <h2 className="font-display text-lg font-bold text-slate-900">Security Credentials</h2>
+                        <p className="text-xs text-slate-500 mt-0.5">Ensure your password is strong and unique</p>
+                    </div>
+
                     {/* Current Password */}
                     <div>
-                        <label className="text-sm font-medium text-ink mb-1.5 block">Current Password</label>
+                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Current Password</label>
                         <div className="relative">
                             <input
                                 type={showOld ? "text" : "password"}
                                 required
                                 value={form.oldPassword}
                                 onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
-                                className="input-field pr-10"
-                                placeholder="Enter current password"
+                                className="input-field pr-12"
+                                placeholder="Enter your current password"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowOld(!showOld)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink focus:outline-none"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500 hover:text-slate-900 bg-slate-100 px-2 py-1 rounded"
                             >
                                 {showOld ? "Hide" : "Show"}
                             </button>
@@ -81,20 +86,20 @@ function AdminChangePassword() {
 
                     {/* New Password */}
                     <div>
-                        <label className="text-sm font-medium text-ink mb-1.5 block">New Password</label>
+                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">New Password</label>
                         <div className="relative">
                             <input
                                 type={showNew ? "text" : "password"}
                                 required
                                 value={form.newPassword}
                                 onChange={(e) => setForm({ ...form, newPassword: e.target.value })}
-                                className="input-field pr-10"
-                                placeholder="Enter new strong password"
+                                className="input-field pr-12"
+                                placeholder="Enter a new strong password"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowNew(!showNew)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink focus:outline-none"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500 hover:text-slate-900 bg-slate-100 px-2 py-1 rounded"
                             >
                                 {showNew ? "Hide" : "Show"}
                             </button>
@@ -102,22 +107,22 @@ function AdminChangePassword() {
 
                         {/* Password strength checklist */}
                         {form.newPassword && (
-                            <div className="mt-3 p-3 bg-slate-50 border border-slate-200 text-xs space-y-1 rounded-sm">
-                                <p className="font-semibold text-slate-700 mb-1">Password Requirements:</p>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-                                    <div className={`flex items-center gap-1.5 ${hasMinLength ? "text-emerald-600 font-medium" : "text-slate-500"}`}>
+                            <div className="mt-3 p-3.5 bg-slate-50 border border-slate-200 text-xs space-y-1.5 rounded-lg">
+                                <p className="font-bold text-slate-800 mb-1">Security Checklist:</p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                                    <div className={`flex items-center gap-1.5 ${hasMinLength ? "text-emerald-700 font-bold" : "text-slate-500"}`}>
                                         <span>{hasMinLength ? "✓" : "○"}</span> At least 8 characters
                                     </div>
-                                    <div className={`flex items-center gap-1.5 ${hasUpper ? "text-emerald-600 font-medium" : "text-slate-500"}`}>
-                                        <span>{hasUpper ? "✓" : "○"}</span> 1 uppercase letter (A-Z)
+                                    <div className={`flex items-center gap-1.5 ${hasUpper ? "text-emerald-700 font-bold" : "text-slate-500"}`}>
+                                        <span>{hasUpper ? "✓" : "○"}</span> 1 uppercase (A-Z)
                                     </div>
-                                    <div className={`flex items-center gap-1.5 ${hasLower ? "text-emerald-600 font-medium" : "text-slate-500"}`}>
-                                        <span>{hasLower ? "✓" : "○"}</span> 1 lowercase letter (a-z)
+                                    <div className={`flex items-center gap-1.5 ${hasLower ? "text-emerald-700 font-bold" : "text-slate-500"}`}>
+                                        <span>{hasLower ? "✓" : "○"}</span> 1 lowercase (a-z)
                                     </div>
-                                    <div className={`flex items-center gap-1.5 ${hasDigit ? "text-emerald-600 font-medium" : "text-slate-500"}`}>
+                                    <div className={`flex items-center gap-1.5 ${hasDigit ? "text-emerald-700 font-bold" : "text-slate-500"}`}>
                                         <span>{hasDigit ? "✓" : "○"}</span> 1 number (0-9)
                                     </div>
-                                    <div className={`flex items-center gap-1.5 sm:col-span-2 ${hasSpecial ? "text-emerald-600 font-medium" : "text-slate-500"}`}>
+                                    <div className={`flex items-center gap-1.5 sm:col-span-2 ${hasSpecial ? "text-emerald-700 font-bold" : "text-slate-500"}`}>
                                         <span>{hasSpecial ? "✓" : "○"}</span> 1 special symbol (@$!%*?&#)
                                     </div>
                                 </div>
@@ -127,34 +132,34 @@ function AdminChangePassword() {
 
                     {/* Confirm New Password */}
                     <div>
-                        <label className="text-sm font-medium text-ink mb-1.5 block">Confirm New Password</label>
+                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Confirm New Password</label>
                         <div className="relative">
                             <input
                                 type={showConfirm ? "text" : "password"}
                                 required
                                 value={form.confirm}
                                 onChange={(e) => setForm({ ...form, confirm: e.target.value })}
-                                className="input-field pr-10"
-                                placeholder="Re-enter new password"
+                                className="input-field pr-12"
+                                placeholder="Re-type new password"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowConfirm(!showConfirm)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink focus:outline-none"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500 hover:text-slate-900 bg-slate-100 px-2 py-1 rounded"
                             >
                                 {showConfirm ? "Hide" : "Show"}
                             </button>
                         </div>
                         {form.confirm && form.newPassword !== form.confirm && (
-                            <p className="text-xs text-red-600 mt-1">Passwords do not match</p>
+                            <p className="text-xs font-bold text-red-600 mt-1.5">Passwords do not match</p>
                         )}
                     </div>
 
-                    <div className="pt-2">
+                    <div className="pt-3 border-t border-slate-200">
                         <button
                             type="submit"
                             disabled={saving || (form.newPassword ? !isPasswordStrong : false)}
-                            className="btn-primary disabled:opacity-50"
+                            className="btn-primary !py-3 px-8 font-bold text-sm rounded-lg shadow-xs disabled:opacity-50"
                         >
                             {saving ? "Updating Password..." : "Update Password"}
                         </button>

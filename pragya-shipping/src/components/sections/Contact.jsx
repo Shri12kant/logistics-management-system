@@ -116,17 +116,17 @@ function Contact() {
                     className="bg-white/[0.04] border border-white/10 text-white p-8 md:p-10 shadow-2xl rounded-2xl backdrop-blur-md"
                 >
                     <div className="space-y-4">
-                        <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="input-field" required />
-                        <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="input-field" required />
-                        <input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} maxLength={10} className="input-field" required />
-                        <select name="serviceType" value={formData.serviceType} onChange={handleChange} className="input-field" required>
+                        <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="input-field-dark" required />
+                        <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="input-field-dark" required />
+                        <input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} maxLength={10} className="input-field-dark" required />
+                        <select name="serviceType" value={formData.serviceType} onChange={handleChange} className="input-field-dark" required>
                             <option value="">Select service</option>
                             <option value="Road Transportation">Road Transportation</option>
                             <option value="Goods Delivery">Goods Delivery</option>
                             <option value="Customs Clearance">Customs Clearance</option>
                             <option value="Other">Other</option>
                         </select>
-                        <textarea rows="5" name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} className="input-field resize-none" required />
+                        <textarea rows="5" name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} className="input-field-dark resize-none" required />
                     </div>
 
                     <button

@@ -103,13 +103,13 @@ function Admin() {
     const getStatusClass = (status) => {
         switch (status) {
             case "NEW":
-                return "bg-blue-50 text-blue-700 border-blue-200";
+                return "bg-blue-50 text-blue-800 border-blue-300";
             case "READ":
-                return "bg-yellow-50 text-yellow-700 border-yellow-200";
+                return "bg-amber-50 text-amber-800 border-amber-300";
             case "RESOLVED":
-                return "bg-emerald-50 text-emerald-700 border-emerald-200";
+                return "bg-emerald-50 text-emerald-800 border-emerald-300";
             default:
-                return "bg-gray-50 text-gray-700 border-gray-200";
+                return "bg-slate-50 text-slate-800 border-slate-300";
         }
     };
 
@@ -125,22 +125,22 @@ function Admin() {
                             fetchContacts();
                             toast.success("Refreshed");
                         }}
-                        className="px-4 py-2.5 border border-mist bg-white text-sm font-semibold hover:bg-mist/50"
+                        className="px-4 py-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold rounded-lg shadow-xs transition"
                     >
                         Refresh
                     </button>
-                    <button type="button" onClick={exportToExcel} className="btn-steel text-sm !py-2.5">
+                    <button type="button" onClick={exportToExcel} className="btn-steel !py-2 text-sm font-semibold rounded-lg shadow-xs">
                         Export Excel
                     </button>
                 </>
             }
         >
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <div className="bg-white border border-mist px-5 py-4 flex-1">
-                    <p className="text-muted text-xs uppercase tracking-wider font-semibold">Total</p>
-                    <p className="font-display text-3xl font-bold text-ink mt-1">{contacts.length}</p>
+                <div className="bg-white border border-slate-200 px-5 py-4 rounded-xl shadow-xs flex-1">
+                    <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">Total Contacts</p>
+                    <p className="font-display text-3xl font-extrabold text-slate-900 mt-1">{contacts.length}</p>
                 </div>
-                <div className="bg-white border border-mist px-5 py-4 flex-[2]">
+                <div className="bg-white border border-slate-200 px-5 py-4 rounded-xl shadow-xs flex-[2]">
                     <input
                         type="text"
                         placeholder="Search name, email, phone, service..."
@@ -151,70 +151,72 @@ function Admin() {
                 </div>
             </div>
 
-            <div className="bg-white border border-mist overflow-hidden shadow-sm">
-                <div className="px-5 py-4 border-b border-mist">
-                    <h3 className="font-display font-bold text-ink">Messages</h3>
-                    <p className="text-sm text-muted">
-                        Showing {filteredContacts.length} of {contacts.length}
-                    </p>
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-white">
+                    <div>
+                        <h3 className="font-display font-bold text-slate-900 text-lg">Inquiry Messages</h3>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                            Showing {filteredContacts.length} of {contacts.length} total messages
+                        </p>
+                    </div>
                 </div>
 
                 <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm">
-                        <thead className="bg-ink text-white">
+                        <thead className="bg-[#0a1628] text-white">
                             <tr>
-                                {["ID", "Customer", "Email", "Phone", "Service", "Status", "Message", ""].map((h) => (
-                                    <th key={h || "a"} className="px-4 py-3 font-semibold whitespace-nowrap">{h}</th>
+                                {["ID", "Customer", "Email", "Phone", "Service", "Status", "Message", "Actions"].map((h) => (
+                                    <th key={h} className="px-5 py-3.5 font-bold text-xs uppercase tracking-wider text-slate-200 whitespace-nowrap">{h}</th>
                                 ))}
                             </tr>
                         </thead>
                         <tbody>
                             {loading ? (
                                 <tr>
-                                    <td colSpan={8} className="text-center py-16 text-muted">Loading contacts...</td>
+                                    <td colSpan={8} className="text-center py-16 text-slate-500">Loading contacts...</td>
                                 </tr>
                             ) : filteredContacts.length === 0 ? (
                                 <tr>
-                                    <td colSpan={8} className="text-center py-16 text-muted">No contacts found</td>
+                                    <td colSpan={8} className="text-center py-16 text-slate-500">No contacts found</td>
                                 </tr>
                             ) : (
                                 filteredContacts.map((contact) => (
-                                    <tr key={contact.id} className="border-b border-mist hover:bg-fog/80">
-                                        <td className="px-4 py-3 text-muted">#{contact.id}</td>
-                                        <td className="px-4 py-3">
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-8 h-8 bg-ink text-signal flex items-center justify-center font-bold text-xs">
+                                    <tr key={contact.id} className="border-b border-slate-100 hover:bg-slate-50/80 transition text-slate-800">
+                                        <td className="px-5 py-4 font-mono text-xs text-slate-500 font-semibold">#{contact.id}</td>
+                                        <td className="px-5 py-4">
+                                            <div className="flex items-center gap-2.5">
+                                                <div className="w-8 h-8 rounded-full bg-[#0a1628] text-signal flex items-center justify-center font-bold text-xs shadow-xs">
                                                     {contact.name?.charAt(0).toUpperCase()}
                                                 </div>
-                                                <span className="font-semibold text-ink">{contact.name}</span>
+                                                <span className="font-bold text-slate-900">{contact.name}</span>
                                             </div>
                                         </td>
-                                        <td className="px-4 py-3 text-muted">{contact.email}</td>
-                                        <td className="px-4 py-3">{contact.phoneNumber}</td>
-                                        <td className="px-4 py-3">
-                                            <span className="bg-mist text-steel px-2 py-0.5 text-xs font-semibold">
+                                        <td className="px-5 py-4 text-slate-600">{contact.email}</td>
+                                        <td className="px-5 py-4 text-slate-700 font-medium">{contact.phoneNumber}</td>
+                                        <td className="px-5 py-4">
+                                            <span className="bg-slate-100 text-slate-800 border border-slate-200 px-2.5 py-1 text-xs font-semibold rounded">
                                                 {contact.serviceType}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3">
+                                        <td className="px-5 py-4">
                                             <select
                                                 value={contact.status || "NEW"}
                                                 onChange={(e) => updateStatus(contact.id, e.target.value)}
-                                                className={`px-2 py-1.5 border text-xs font-semibold ${getStatusClass(contact.status)}`}
+                                                className={`px-2.5 py-1.5 border rounded-md text-xs font-bold ${getStatusClass(contact.status)}`}
                                             >
                                                 <option value="NEW">NEW</option>
                                                 <option value="READ">READ</option>
                                                 <option value="RESOLVED">RESOLVED</option>
                                             </select>
                                         </td>
-                                        <td className="px-4 py-3 max-w-[180px]">
-                                            <p className="truncate text-muted">{contact.message}</p>
+                                        <td className="px-5 py-4 max-w-[200px]">
+                                            <p className="truncate text-slate-600" title={contact.message}>{contact.message}</p>
                                         </td>
-                                        <td className="px-4 py-3 whitespace-nowrap">
+                                        <td className="px-5 py-4 whitespace-nowrap">
                                             <button
                                                 type="button"
                                                 onClick={() => setSelectedContact(contact)}
-                                                className="text-steel text-xs font-semibold hover:underline mr-3"
+                                                className="text-blue-700 hover:text-blue-900 font-bold text-xs bg-blue-50 px-2.5 py-1.5 rounded hover:bg-blue-100 transition mr-2"
                                             >
                                                 View
                                             </button>
@@ -222,7 +224,7 @@ function Admin() {
                                                 type="button"
                                                 onClick={() => deleteContact(contact.id)}
                                                 disabled={deletingId === contact.id}
-                                                className="text-red-600 text-xs font-semibold hover:underline disabled:opacity-50"
+                                                className="text-red-600 hover:text-red-800 font-bold text-xs bg-red-50 px-2.5 py-1.5 rounded hover:bg-red-100 transition disabled:opacity-50"
                                             >
                                                 {deletingId === contact.id ? "..." : "Delete"}
                                             </button>
@@ -236,40 +238,40 @@ function Admin() {
             </div>
 
             {selectedContact && (
-                <div className="fixed inset-0 bg-ink/60 z-50 flex items-center justify-center p-4" onClick={() => setSelectedContact(null)}>
-                    <div className="bg-white w-full max-w-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
-                        <div className="bg-ink text-white px-6 py-4 flex justify-between items-center">
+                <div className="fixed inset-0 bg-[#0a1628]/70 backdrop-blur-xs z-50 flex items-center justify-center p-4" onClick={() => setSelectedContact(null)}>
+                    <div className="bg-white text-slate-900 w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl border border-slate-200" onClick={(e) => e.stopPropagation()}>
+                        <div className="bg-[#0a1628] text-white px-6 py-4 flex justify-between items-center">
                             <div>
-                                <h2 className="font-display text-xl font-bold">Contact Details</h2>
-                                <p className="text-white/50 text-sm">#{selectedContact.id}</p>
+                                <h2 className="font-display text-xl font-bold text-white">Contact Details</h2>
+                                <p className="text-slate-400 text-xs font-mono mt-0.5">ID: #{selectedContact.id}</p>
                             </div>
-                            <button type="button" onClick={() => setSelectedContact(null)} className="text-2xl text-white/70 hover:text-white">×</button>
+                            <button type="button" onClick={() => setSelectedContact(null)} className="text-2xl text-slate-400 hover:text-white leading-none">×</button>
                         </div>
                         <div className="p-6 space-y-5">
                             <div className="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <p className="text-muted text-xs uppercase tracking-wider">Name</p>
-                                    <p className="font-semibold text-lg mt-1">{selectedContact.name}</p>
+                                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                                    <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">Name</p>
+                                    <p className="font-bold text-slate-900 text-base mt-1">{selectedContact.name}</p>
                                 </div>
-                                <div>
-                                    <p className="text-muted text-xs uppercase tracking-wider">Email</p>
-                                    <p className="font-semibold mt-1">{selectedContact.email}</p>
+                                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                                    <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">Email</p>
+                                    <p className="font-bold text-slate-900 text-base mt-1">{selectedContact.email}</p>
                                 </div>
-                                <div>
-                                    <p className="text-muted text-xs uppercase tracking-wider">Phone</p>
-                                    <p className="font-semibold mt-1">{selectedContact.phoneNumber}</p>
+                                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                                    <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">Phone</p>
+                                    <p className="font-bold text-slate-900 text-base mt-1">{selectedContact.phoneNumber}</p>
                                 </div>
-                                <div>
-                                    <p className="text-muted text-xs uppercase tracking-wider">Service</p>
-                                    <p className="font-semibold mt-1">{selectedContact.serviceType}</p>
+                                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                                    <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">Service Type</p>
+                                    <p className="font-bold text-slate-900 text-base mt-1">{selectedContact.serviceType}</p>
                                 </div>
                             </div>
                             <div>
-                                <p className="text-muted text-xs uppercase tracking-wider mb-2">Status</p>
+                                <p className="text-slate-700 text-xs uppercase tracking-wider font-bold mb-2">Update Status</p>
                                 <select
                                     value={selectedContact.status || "NEW"}
                                     onChange={(e) => updateStatus(selectedContact.id, e.target.value)}
-                                    className={`px-3 py-2 border font-semibold ${getStatusClass(selectedContact.status)}`}
+                                    className={`px-3 py-2 border rounded-lg font-bold text-sm ${getStatusClass(selectedContact.status)}`}
                                 >
                                     <option value="NEW">NEW</option>
                                     <option value="READ">READ</option>
@@ -277,20 +279,24 @@ function Admin() {
                                 </select>
                             </div>
                             <div>
-                                <p className="text-muted text-xs uppercase tracking-wider mb-2">Message</p>
-                                <div className="bg-fog border border-mist p-4 leading-relaxed whitespace-pre-wrap">
+                                <p className="text-slate-700 text-xs uppercase tracking-wider font-bold mb-2">Inquiry Message</p>
+                                <div className="bg-slate-50 border border-slate-200 text-slate-800 p-4 rounded-xl leading-relaxed whitespace-pre-wrap text-sm font-medium">
                                     {selectedContact.message}
                                 </div>
                             </div>
                         </div>
-                        <div className="border-t border-mist px-6 py-4 flex justify-end gap-3">
-                            <button type="button" onClick={() => setSelectedContact(null)} className="px-4 py-2 border border-mist font-semibold">
+                        <div className="border-t border-slate-200 px-6 py-4 flex justify-end gap-3 bg-slate-50">
+                            <button
+                                type="button"
+                                onClick={() => setSelectedContact(null)}
+                                className="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition text-sm"
+                            >
                                 Close
                             </button>
                             <button
                                 type="button"
                                 onClick={() => deleteContact(selectedContact.id)}
-                                className="px-4 py-2 bg-red-600 text-white font-semibold hover:bg-red-700"
+                                className="px-5 py-2.5 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition shadow-xs text-sm"
                             >
                                 Delete
                             </button>

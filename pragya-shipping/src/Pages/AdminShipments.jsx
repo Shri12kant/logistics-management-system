@@ -121,14 +121,14 @@ function AdminShipments() {
 
     const getStatusColor = (status) => {
         const map = {
-            PENDING: "bg-yellow-50 text-yellow-800 border-yellow-200",
-            PICKED_UP: "bg-blue-50 text-blue-800 border-blue-200",
-            IN_TRANSIT: "bg-indigo-50 text-indigo-800 border-indigo-200",
-            OUT_FOR_DELIVERY: "bg-orange-50 text-orange-800 border-orange-200",
-            DELIVERED: "bg-emerald-50 text-emerald-800 border-emerald-200",
-            CANCELLED: "bg-red-50 text-red-800 border-red-200"
+            PENDING: "bg-amber-50 text-amber-800 border-amber-300",
+            PICKED_UP: "bg-blue-50 text-blue-800 border-blue-300",
+            IN_TRANSIT: "bg-indigo-50 text-indigo-800 border-indigo-300",
+            OUT_FOR_DELIVERY: "bg-orange-50 text-orange-800 border-orange-300",
+            DELIVERED: "bg-emerald-50 text-emerald-800 border-emerald-300",
+            CANCELLED: "bg-red-50 text-red-800 border-red-300"
         };
-        return map[status] || "bg-gray-50 text-gray-800 border-gray-200";
+        return map[status] || "bg-slate-50 text-slate-800 border-slate-300";
     };
 
     const filtered = shipments.filter((s) => {
@@ -157,10 +157,18 @@ function AdminShipments() {
             subtitle="Create, track and update consignments"
             actions={
                 <>
-                    <button type="button" onClick={fetchShipments} className="px-4 py-2.5 border border-mist bg-white text-sm font-semibold hover:bg-mist/50">
+                    <button
+                        type="button"
+                        onClick={fetchShipments}
+                        className="px-4 py-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold rounded-lg shadow-xs transition"
+                    >
                         Refresh
                     </button>
-                    <button type="button" onClick={() => setShowModal(true)} className="btn-primary text-sm !py-2.5">
+                    <button
+                        type="button"
+                        onClick={() => setShowModal(true)}
+                        className="btn-primary !py-2 text-sm font-bold rounded-lg shadow-xs"
+                    >
                         + New Shipment
                     </button>
                 </>
@@ -168,22 +176,22 @@ function AdminShipments() {
         >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 {[
-                    ["Total", counts.total, "text-ink"],
-                    ["Pending", counts.pending, "text-yellow-600"],
-                    ["In Progress", counts.inTransit, "text-steel"],
+                    ["Total Shipments", counts.total, "text-slate-900"],
+                    ["Pending Pickups", counts.pending, "text-amber-600"],
+                    ["In Progress", counts.inTransit, "text-blue-600"],
                     ["Delivered", counts.delivered, "text-emerald-600"]
                 ].map(([label, value, color]) => (
-                    <div key={label} className="bg-white border border-mist p-4">
-                        <p className="text-muted text-xs uppercase tracking-wider font-semibold">{label}</p>
-                        <p className={`font-display text-3xl font-bold mt-1 ${color}`}>{value}</p>
+                    <div key={label} className="bg-white border border-slate-200 p-5 rounded-xl shadow-xs">
+                        <p className="text-slate-500 text-xs uppercase tracking-wider font-bold">{label}</p>
+                        <p className={`font-display text-3xl font-extrabold mt-1 ${color}`}>{value}</p>
                     </div>
                 ))}
             </div>
 
-            <div className="bg-white border border-mist p-4 mb-6 flex flex-col md:flex-row gap-3">
+            <div className="bg-white border border-slate-200 p-4 rounded-xl shadow-xs mb-6 flex flex-col md:flex-row gap-3">
                 <input
                     type="text"
-                    placeholder="Search tracking, name, phone, address..."
+                    placeholder="Search tracking #, name, phone, address..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     className="input-field flex-1"
@@ -191,83 +199,93 @@ function AdminShipments() {
                 <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="input-field md:w-48"
+                    className="input-field md:w-52"
                 >
-                    <option value="ALL">All Status</option>
+                    <option value="ALL">All Statuses</option>
                     {STATUSES.map((s) => (
                         <option key={s} value={s}>{s.replaceAll("_", " ")}</option>
                     ))}
                 </select>
             </div>
 
-            <div className="bg-white border border-mist overflow-hidden shadow-sm">
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
                 {loading ? (
-                    <div className="p-12 text-center text-muted">Loading shipments...</div>
+                    <div className="p-16 text-center text-slate-500 font-medium">Loading shipments...</div>
                 ) : filtered.length === 0 ? (
-                    <div className="p-12 text-center text-muted">
-                        No shipments found. Create one with <strong>+ New Shipment</strong>.
+                    <div className="p-16 text-center text-slate-500 font-medium">
+                        No shipments found matching your criteria.
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full text-left text-sm">
-                            <thead className="bg-ink text-white">
+                            <thead className="bg-[#0a1628] text-white">
                                 <tr>
-                                    {["Tracking", "Customer", "Route", "Service", "Amount", "Pay", "Status", ""].map((h) => (
-                                        <th key={h || "a"} className="px-4 py-3 font-semibold">{h}</th>
+                                    {["Tracking #", "Customer", "Route Details", "Service", "Amount", "Payment", "Status", "Actions"].map((h) => (
+                                        <th key={h} className="px-5 py-3.5 font-bold text-xs uppercase tracking-wider text-slate-200 whitespace-nowrap">{h}</th>
                                     ))}
                                 </tr>
                             </thead>
                             <tbody>
                                 {filtered.map((s) => (
-                                    <tr key={s.id} className="border-b border-mist hover:bg-fog/80">
-                                        <td className="px-4 py-3">
-                                            <p className="font-mono font-bold text-steel">{s.trackingNumber}</p>
-                                            <p className="text-xs text-muted mt-0.5">
+                                    <tr key={s.id} className="border-b border-slate-100 hover:bg-slate-50/80 transition text-slate-800">
+                                        <td className="px-5 py-4 whitespace-nowrap">
+                                            <p className="font-mono font-bold text-blue-700 text-sm">{s.trackingNumber}</p>
+                                            <p className="text-xs text-slate-500 mt-0.5">
                                                 {s.createdAt ? new Date(s.createdAt).toLocaleDateString() : "—"}
                                             </p>
                                         </td>
-                                        <td className="px-4 py-3">
-                                            <p className="font-semibold text-ink">{s.customerName}</p>
-                                            <p className="text-muted">{s.customerPhone}</p>
+                                        <td className="px-5 py-4 whitespace-nowrap">
+                                            <p className="font-bold text-slate-900">{s.customerName}</p>
+                                            <p className="text-slate-500 text-xs mt-0.5">{s.customerPhone}</p>
                                         </td>
-                                        <td className="px-4 py-3 max-w-[200px]">
-                                            <p className="truncate text-muted" title={s.pickupAddress}>From: {s.pickupAddress}</p>
-                                            <p className="truncate text-muted" title={s.deliveryAddress}>To: {s.deliveryAddress}</p>
+                                        <td className="px-5 py-4 max-w-[220px]">
+                                            <p className="truncate text-slate-700 text-xs font-medium" title={s.pickupAddress}>
+                                                <span className="font-bold text-slate-500">From:</span> {s.pickupAddress}
+                                            </p>
+                                            <p className="truncate text-slate-700 text-xs font-medium mt-0.5" title={s.deliveryAddress}>
+                                                <span className="font-bold text-slate-500">To:</span> {s.deliveryAddress}
+                                            </p>
                                         </td>
-                                        <td className="px-4 py-3">
-                                            <p>{s.serviceType}</p>
-                                            <p className="text-muted">{s.weight} kg</p>
+                                        <td className="px-5 py-4 whitespace-nowrap">
+                                            <span className="bg-slate-100 text-slate-800 border border-slate-200 px-2 py-0.5 rounded text-xs font-semibold">
+                                                {s.serviceType}
+                                            </span>
+                                            <p className="text-slate-500 text-xs mt-1 font-medium">{s.weight} kg</p>
                                         </td>
-                                        <td className="px-4 py-3 font-semibold text-ink">₹{s.amount}</td>
-                                        <td className="px-4 py-3">
+                                        <td className="px-5 py-4 whitespace-nowrap font-bold text-slate-900 text-base">
+                                            ₹{s.amount}
+                                        </td>
+                                        <td className="px-5 py-4 whitespace-nowrap">
                                             {s.paymentStatus === "PAID" ? (
-                                                <span className="text-emerald-700 text-xs font-bold">PAID</span>
+                                                <span className="bg-emerald-50 text-emerald-700 border border-emerald-300 px-2.5 py-1 rounded text-xs font-bold">
+                                                    PAID
+                                                </span>
                                             ) : (
                                                 <button
                                                     type="button"
                                                     onClick={() => collectPayment(s)}
-                                                    className="text-steel text-xs font-semibold hover:underline"
+                                                    className="text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded text-xs font-bold transition border border-blue-200"
                                                 >
                                                     Collect
                                                 </button>
                                             )}
                                         </td>
-                                        <td className="px-4 py-3">
+                                        <td className="px-5 py-4 whitespace-nowrap">
                                             <select
                                                 value={s.status}
                                                 onChange={(e) => updateStatus(s.id, e.target.value)}
-                                                className={`border px-2 py-1.5 text-xs font-semibold ${getStatusColor(s.status)}`}
+                                                className={`border px-2.5 py-1.5 rounded-md text-xs font-bold ${getStatusColor(s.status)}`}
                                             >
                                                 {STATUSES.map((st) => (
                                                     <option key={st} value={st}>{st.replaceAll("_", " ")}</option>
                                                 ))}
                                             </select>
                                         </td>
-                                        <td className="px-4 py-3">
+                                        <td className="px-5 py-4 whitespace-nowrap">
                                             <button
                                                 type="button"
                                                 onClick={() => deleteShipment(s.id, s.trackingNumber)}
-                                                className="text-red-600 hover:underline text-xs font-semibold"
+                                                className="text-red-600 hover:text-red-800 font-bold text-xs bg-red-50 px-2.5 py-1.5 rounded hover:bg-red-100 transition border border-red-200"
                                             >
                                                 Delete
                                             </button>
@@ -281,61 +299,74 @@ function AdminShipments() {
             </div>
 
             {showModal && (
-                <div className="fixed inset-0 bg-ink/60 z-50 flex items-center justify-center p-4">
-                    <div className="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl">
-                        <div className="sticky top-0 bg-ink text-white px-6 py-4 flex justify-between items-center">
-                            <h2 className="font-display text-xl font-bold">New Shipment</h2>
-                            <button type="button" onClick={() => setShowModal(false)} className="text-2xl leading-none text-white/70 hover:text-white">×</button>
+                <div className="fixed inset-0 bg-[#0a1628]/70 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+                    <div className="bg-white text-slate-900 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl border border-slate-200">
+                        <div className="sticky top-0 bg-[#0a1628] text-white px-6 py-4 flex justify-between items-center z-10">
+                            <div>
+                                <h2 className="font-display text-xl font-bold text-white">New Shipment Consignment</h2>
+                                <p className="text-slate-400 text-xs mt-0.5">Fill details to generate tracking and receipt</p>
+                            </div>
+                            <button type="button" onClick={() => setShowModal(false)} className="text-2xl text-slate-400 hover:text-white leading-none">×</button>
                         </div>
                         <form onSubmit={createShipment} className="p-6 grid md:grid-cols-2 gap-4">
                             <div>
-                                <label className="text-sm text-muted mb-1 block">Customer Name *</label>
-                                <input required value={form.customerName} onChange={(e) => setForm({ ...form, customerName: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Customer Name *</label>
+                                <input required value={form.customerName} onChange={(e) => setForm({ ...form, customerName: e.target.value })} className="input-field" placeholder="Full name" />
                             </div>
                             <div>
-                                <label className="text-sm text-muted mb-1 block">Phone *</label>
-                                <input required value={form.customerPhone} onChange={(e) => setForm({ ...form, customerPhone: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Customer Phone *</label>
+                                <input required value={form.customerPhone} onChange={(e) => setForm({ ...form, customerPhone: e.target.value })} className="input-field" placeholder="10-digit mobile" />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="text-sm text-muted mb-1 block">Email</label>
-                                <input type="email" value={form.customerEmail} onChange={(e) => setForm({ ...form, customerEmail: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Customer Email</label>
+                                <input type="email" value={form.customerEmail} onChange={(e) => setForm({ ...form, customerEmail: e.target.value })} className="input-field" placeholder="customer@example.com (optional)" />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="text-sm text-muted mb-1 block">Pickup *</label>
-                                <textarea required rows={2} value={form.pickupAddress} onChange={(e) => setForm({ ...form, pickupAddress: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Pickup Address *</label>
+                                <textarea required rows={2} value={form.pickupAddress} onChange={(e) => setForm({ ...form, pickupAddress: e.target.value })} className="input-field" placeholder="Complete pickup location with pincode" />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="text-sm text-muted mb-1 block">Delivery *</label>
-                                <textarea required rows={2} value={form.deliveryAddress} onChange={(e) => setForm({ ...form, deliveryAddress: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Delivery Address *</label>
+                                <textarea required rows={2} value={form.deliveryAddress} onChange={(e) => setForm({ ...form, deliveryAddress: e.target.value })} className="input-field" placeholder="Complete delivery destination with pincode" />
                             </div>
                             <div>
-                                <label className="text-sm text-muted mb-1 block">Weight (kg) *</label>
-                                <input required type="number" min="0.1" step="0.1" value={form.weight} onChange={(e) => setForm({ ...form, weight: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Weight (kg) *</label>
+                                <input required type="number" min="0.1" step="0.1" value={form.weight} onChange={(e) => setForm({ ...form, weight: e.target.value })} className="input-field" placeholder="e.g. 15.5" />
                             </div>
                             <div>
-                                <label className="text-sm text-muted mb-1 block">Amount (₹) *</label>
-                                <input required type="number" min="0" value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Amount (₹) *</label>
+                                <input required type="number" min="0" value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} className="input-field" placeholder="Total bill amount" />
                             </div>
                             <div>
-                                <label className="text-sm text-muted mb-1 block">Service</label>
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Service Type</label>
                                 <select value={form.serviceType} onChange={(e) => setForm({ ...form, serviceType: e.target.value })} className="input-field">
-                                    <option value="STANDARD">STANDARD</option>
-                                    <option value="EXPRESS">EXPRESS</option>
-                                    <option value="PREMIUM">PREMIUM</option>
+                                    <option value="STANDARD">STANDARD (3-5 Days)</option>
+                                    <option value="EXPRESS">EXPRESS (1-2 Days)</option>
+                                    <option value="PREMIUM">PREMIUM (Same Day)</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="text-sm text-muted mb-1 block">Est. Delivery</label>
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Est. Delivery Date</label>
                                 <input type="date" value={form.estimatedDelivery} onChange={(e) => setForm({ ...form, estimatedDelivery: e.target.value })} className="input-field" />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="text-sm text-muted mb-1 block">Notes</label>
-                                <textarea rows={2} value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="input-field" />
+                                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">Additional Notes</label>
+                                <textarea rows={2} value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="input-field" placeholder="Handling instructions or package description..." />
                             </div>
-                            <div className="md:col-span-2 flex justify-end gap-3 pt-2">
-                                <button type="button" onClick={() => setShowModal(false)} className="px-5 py-2.5 border border-mist font-semibold">Cancel</button>
-                                <button type="submit" disabled={saving} className="btn-primary disabled:opacity-50">
-                                    {saving ? "Creating..." : "Create Shipment"}
+                            <div className="md:col-span-2 flex justify-end gap-3 pt-3 border-t border-slate-200">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowModal(false)}
+                                    className="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition text-sm"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    disabled={saving}
+                                    className="btn-primary !py-2.5 px-6 font-bold rounded-lg shadow-xs text-sm disabled:opacity-50"
+                                >
+                                    {saving ? "Creating Consignment..." : "Create Shipment"}
                                 </button>
                             </div>
                         </form>

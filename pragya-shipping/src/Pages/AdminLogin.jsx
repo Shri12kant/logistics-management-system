@@ -61,7 +61,7 @@ function AdminLogin() {
     };
 
     return (
-        <div className="min-h-screen bg-ink flex items-center justify-center px-4 relative overflow-hidden">
+        <div className="min-h-screen bg-[#0a1628] flex items-center justify-center px-4 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(232,163,23,0.12),_transparent_50%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(27,79,114,0.35),_transparent_55%)]" />
 
@@ -71,7 +71,7 @@ function AdminLogin() {
                         <span>PRAGYA SHIPPING </span>
                         <span className="text-signal">AND LOGISTICS</span>
                     </Link>
-                    <div className="flex items-center justify-center gap-1.5 mt-2 text-white/50 text-xs tracking-wide uppercase">
+                    <div className="flex items-center justify-center gap-1.5 mt-2 text-white/60 text-xs tracking-wide uppercase font-semibold">
                         <svg className="w-3.5 h-3.5 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
@@ -79,14 +79,14 @@ function AdminLogin() {
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="bg-white p-8 md:p-10 shadow-2xl space-y-5 rounded-sm">
+                <form onSubmit={handleSubmit} className="bg-white text-slate-900 p-8 md:p-10 shadow-2xl space-y-5 rounded-2xl border border-slate-100">
                     <div>
-                        <h1 className="font-display text-2xl font-bold text-ink">Sign in</h1>
-                        <p className="text-muted text-xs mt-1">Enter your authorized credentials</p>
+                        <h1 className="font-display text-2xl font-bold text-slate-900">Sign in</h1>
+                        <p className="text-slate-500 text-xs mt-1 font-medium">Enter your authorized administrator credentials</p>
                     </div>
 
                     {errorMessage && (
-                        <div className="p-3 text-xs bg-red-50 border-l-4 border-red-500 text-red-700 flex items-start gap-2">
+                        <div className="p-3 text-xs bg-red-50 border-l-4 border-red-500 text-red-700 flex items-start gap-2 rounded-r">
                             <svg className="w-4 h-4 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                             </svg>
@@ -95,7 +95,7 @@ function AdminLogin() {
                     )}
 
                     <div>
-                        <label className="block text-sm font-medium text-muted mb-1.5">Email Address</label>
+                        <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
                         <input
                             type="email"
                             name="email"
@@ -109,7 +109,7 @@ function AdminLogin() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-muted mb-1.5">Password</label>
+                        <label className="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
                         <div className="relative">
                             <input
                                 type={showPassword ? "text" : "password"}
@@ -124,7 +124,7 @@ function AdminLogin() {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink focus:outline-none"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 focus:outline-none"
                                 title={showPassword ? "Hide password" : "Show password"}
                             >
                                 {showPassword ? (
@@ -144,11 +144,11 @@ function AdminLogin() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 !py-3 font-bold"
                     >
                         {loading ? (
                             <>
-                                <svg className="animate-spin h-4 w-4 text-ink" viewBox="0 0 24 24">
+                                <svg className="animate-spin h-4 w-4 text-[#0a1628]" viewBox="0 0 24 24">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                                 </svg>
@@ -159,11 +159,11 @@ function AdminLogin() {
                         )}
                     </button>
 
-                    <div className="pt-2 border-t border-mist flex items-center justify-between text-xs text-muted">
-                        <Link to="/" className="hover:text-steel transition">
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <Link to="/" className="hover:text-slate-900 font-semibold transition">
                             ← Back to website
                         </Link>
-                        <span className="text-[11px] text-muted">Protected by Rate-Limiting</span>
+                        <span className="text-[11px] text-slate-400 font-medium">Protected by Rate-Limiting</span>
                     </div>
                 </form>
             </div>

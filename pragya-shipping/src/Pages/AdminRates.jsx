@@ -66,7 +66,7 @@ function AdminRates() {
 
     const field = (key, label, hint) => (
         <div>
-            <label className="text-sm text-muted mb-1 block">{label}</label>
+            <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 block">{label}</label>
             <input
                 type="number"
                 min="0"
@@ -76,25 +76,35 @@ function AdminRates() {
                 onChange={(e) => setForm({ ...form, [key]: e.target.value })}
                 className="input-field"
             />
-            {hint && <p className="text-xs text-muted mt-1">{hint}</p>}
+            {hint && <p className="text-xs text-slate-500 mt-1 font-medium">{hint}</p>}
         </div>
     );
 
     return (
         <AdminLayout title="Quote Rates" subtitle="Update pricing parameters for instant website calculations">
             {loading ? (
-                <p className="text-muted">Loading...</p>
+                <div className="bg-white border border-slate-200 p-12 rounded-xl text-center text-slate-500 font-medium">
+                    Loading pricing configuration...
+                </div>
             ) : (
-                <form onSubmit={save} className="bg-white border border-mist p-8 max-w-xl space-y-4 shadow-sm">
-                    {field("standardRate", "Standard ₹ per kg", "Delivery within 3–5 days")}
-                    {field("expressRate", "Express ₹ per kg", "Delivery within 1–2 days")}
-                    {field("premiumRate", "Premium ₹ per kg", "Same day delivery")}
-                    {field("minimumCharge", "Minimum base charge (₹)", "Minimum charge per shipment")}
-                    {field("baseDistanceKm", "Free base distance (km)", "Distance covered under standard base rate")}
-                    {field("extraPerKm", "Extra ₹ per km after base distance")}
-                    <button type="submit" disabled={saving} className="btn-primary disabled:opacity-50">
-                        {saving ? "Saving..." : "Save Rates"}
-                    </button>
+                <form onSubmit={save} className="bg-white border border-slate-200 p-8 rounded-xl shadow-xs max-w-xl space-y-5 text-slate-900">
+                    <div className="border-b border-slate-100 pb-4 mb-2">
+                        <h2 className="font-display text-lg font-bold text-slate-900">Rate Configuration</h2>
+                        <p className="text-xs text-slate-500 mt-0.5">Adjust per-kg and distance parameters dynamically</p>
+                    </div>
+
+                    {field("standardRate", "Standard Rate (₹ per kg)", "Standard delivery within 3–5 business days")}
+                    {field("expressRate", "Express Rate (₹ per kg)", "Fast delivery within 1–2 business days")}
+                    {field("premiumRate", "Premium Rate (₹ per kg)", "High priority same day / next day delivery")}
+                    {field("minimumCharge", "Minimum Base Charge (₹)", "Minimum floor rate charged for any consignment")}
+                    {field("baseDistanceKm", "Free Base Distance (km)", "Distance covered under standard base rate without surcharge")}
+                    {field("extraPerKm", "Extra Rate per km (₹)", "Surcharge per km after base distance is exceeded")}
+                    
+                    <div className="pt-2">
+                        <button type="submit" disabled={saving} className="btn-primary !py-3 px-8 font-bold text-sm rounded-lg shadow-xs disabled:opacity-50">
+                            {saving ? "Saving Changes..." : "Save Rate Settings"}
+                        </button>
+                    </div>
                 </form>
             )}
         </AdminLayout>
