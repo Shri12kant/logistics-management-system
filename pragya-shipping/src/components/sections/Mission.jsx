@@ -1,25 +1,7 @@
 import shipCargo from "../../assets/Ship cargo.jpg";
+import cargoIndia from "../../assets/cargoIndia.jpg";
 
 function Mission() {
-    const projectCargoFeatures = [
-        {
-            title: "Over-Dimensional Cargo (ODC)",
-            description: "Custom solutions for oversized freight, transformers, heavy boilers, and construction modules."
-        },
-        {
-            title: "Route Survey & Feasibility",
-            description: "Pre-transit engineering surveys, bridge load assessments, and route planning for zero bottlenecks."
-        },
-        {
-            title: "Multimodal Rail & Sea Transport",
-            description: "Synchronized rail rakes, chartered vessels, and specialized hydraulic multi-axle trailers."
-        },
-        {
-            title: "Turnkey Project Management",
-            description: "End-to-end supervision from factory floor to job site with dedicated on-site logistics crew."
-        }
-    ];
-
     return (
         <section id="mission" className="py-20 md:py-28 bg-white border-y border-mist">
             <div className="max-w-7xl mx-auto px-6 space-y-20">
@@ -57,47 +39,39 @@ function Mission() {
                     </div>
                 </div>
 
-                {/* Project Cargo Specialized Area */}
-                <div className="bg-ink text-white p-8 md:p-14 shadow-2xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-signal/10 rounded-full blur-3xl pointer-events-none" />
-                    
-                    <div className="max-w-3xl">
-                        <p className="text-signal text-xs font-bold tracking-[0.14em] uppercase">
-                            Specialized Capability
-                        </p>
-                        <h3 className="font-display text-3xl md:text-4xl font-extrabold mt-3 text-white">
-                            Project Cargo
-                        </h3>
-                        <p className="mt-4 text-white/70 text-lg leading-relaxed">
-                            Complex, oversized, or high-value industrial freight requires dedicated engineering and specialized equipment. 
-                            We manage entire project supply chains from factory to foundation.
-                        </p>
-                    </div>
+                {/* Project Cargo Specialized Area with cargoIndia image & text overlay */}
+                <div className="bg-ink text-white shadow-2xl relative overflow-hidden rounded-2xl">
+                    <div className="relative min-h-[420px] md:min-h-[480px] flex items-center">
+                        {/* Background Image */}
+                        <img
+                            src={cargoIndia}
+                            alt="Project Cargo logistics across India"
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        {/* Dark Gradient Overlay for Readability */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/40 md:to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-                        {projectCargoFeatures.map((item, idx) => (
-                            <div key={item.title} className="bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover:border-signal/50 transition">
-                                <span className="font-display text-signal font-bold text-sm">
-                                    0{idx + 1}
-                                </span>
-                                <h4 className="font-display font-bold text-lg text-white mt-3">
-                                    {item.title}
-                                </h4>
-                                <p className="text-white/60 text-sm mt-2.5 leading-relaxed">
-                                    {item.description}
-                                </p>
+                        {/* Text Content Over Image */}
+                        <div className="relative z-10 p-8 md:p-14 max-w-2xl space-y-5">
+                            <p className="text-signal text-xs font-bold tracking-[0.14em] uppercase">
+                                Specialized Capability
+                            </p>
+                            <h3 className="font-display text-3xl md:text-5xl font-extrabold text-white leading-tight">
+                                Project Cargo
+                            </h3>
+                            <p className="text-white/85 text-base md:text-lg leading-relaxed">
+                                Complete end-to-end management for Over-Dimensional Cargo (ODC), heavy industrial machinery, 
+                                and complex infrastructure shipments. We engineer custom routes, arrange specialized hydraulic trailers, 
+                                and guarantee safe delivery from factory to site foundation across India.
+                            </p>
+
+                            <div className="pt-3 flex flex-wrap gap-4">
+                                <a href="#contact" className="btn-primary">
+                                    Enquire for Project Cargo
+                                </a>
                             </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                        <div>
-                            <p className="font-semibold text-white">Have an oversized or industrial project consignment?</p>
-                            <p className="text-white/50 text-sm mt-0.5">Talk to our Project Cargo specialists for route planning and custom quotes.</p>
                         </div>
-                        <a href="#contact" className="btn-primary whitespace-nowrap">
-                            Enquire for Project Cargo
-                        </a>
                     </div>
                 </div>
             </div>
