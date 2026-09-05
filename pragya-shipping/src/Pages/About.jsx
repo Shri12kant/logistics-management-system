@@ -5,9 +5,7 @@ function About() {
     const points = [
         "Pan-India Road Transportation Network",
         "Door-to-Door Delivery & Last-Mile Connectivity",
-        "Customs Clearance & Documentation Support",
-        "GPS-Enabled Tracking & Route Monitoring",
-        "Round-the-clock Customer Assistance"
+        "Customs Clearance & Documentation Support"
     ];
 
     return (
