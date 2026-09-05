@@ -9,6 +9,7 @@ function Contact() {
         name: "",
         subject: "",
         email: "",
+        serviceType: "",
         destinationPort: "",
         message: ""
     });
@@ -37,6 +38,10 @@ function Contact() {
             return toast.error("Please enter a valid email address");
         }
 
+        if (!formData.serviceType.trim()) {
+            return toast.error("Please select the required service");
+        }
+
         if (!formData.destinationPort.trim()) {
             return toast.error("Please enter destination port");
         }
@@ -48,13 +53,13 @@ function Contact() {
         try {
             setLoading(true);
 
-            const combinedMessage = `[Subject: ${formData.subject.trim()}] [Destination Port: ${formData.destinationPort.trim()}]\n\n${formData.message.trim()}`;
+            const combinedMessage = `[Subject: ${formData.subject.trim()}] [Service: ${formData.serviceType.trim()}] [Destination Port: ${formData.destinationPort.trim()}]\n\n${formData.message.trim()}`;
 
             const payload = {
                 name: formData.name.trim(),
                 email: formData.email.trim(),
                 phoneNumber: "+91 9999999999",
-                serviceType: "Quick Quote Request",
+                serviceType: formData.serviceType,
                 message: combinedMessage
             };
 
@@ -69,6 +74,7 @@ function Contact() {
                 name: "",
                 subject: "",
                 email: "",
+                serviceType: "",
                 destinationPort: "",
                 message: ""
             });
@@ -164,6 +170,26 @@ function Contact() {
                                 className="input-field-dark"
                                 required
                             />
+                        </div>
+
+                        <div>
+                            <select
+                                name="serviceType"
+                                value={formData.serviceType}
+                                onChange={handleChange}
+                                className="input-field-dark"
+                                required
+                            >
+                                <option value="">Select Service Needed *</option>
+                                <option value="Road Transportation">Road Transportation (Full & Part Truck Load)</option>
+                                <option value="Ocean Freight">Ocean Freight (FCL / LCL Container Cargo)</option>
+                                <option value="Customs Clearance">Customs Clearance (CHA & Documentation)</option>
+                                <option value="Railway Freight">Railway Freight & Bulk Cargo</option>
+                                <option value="Project Cargo">Project Cargo & Heavy Lift</option>
+                                <option value="Air Freight">Air Freight Logistics</option>
+                                <option value="Warehousing & Storage">Warehousing & Storage</option>
+                                <option value="Other Logistics Services">Other Logistics Services</option>
+                            </select>
                         </div>
 
                         <div>
