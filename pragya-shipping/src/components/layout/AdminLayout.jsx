@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logoImg from "../../assets/pragya-logo.png";
 
 const NAV = [
     { path: "/admin/dashboard", label: "Dashboard" },
@@ -23,12 +24,26 @@ export default function AdminLayout({ title, subtitle, actions, children }) {
 
     const Sidebar = () => (
         <aside className="w-64 bg-[#0a1628] text-white flex flex-col h-full border-r border-slate-800">
-            <div className="px-6 py-6 border-b border-slate-800">
-                <Link to="/" className="font-display text-sm font-bold text-white block">
-                    <span>PRAGYA SHIPPING </span>
-                    <span className="text-signal block text-xs tracking-wider">AND LOGISTICS</span>
+            <div className="px-5 py-5 border-b border-slate-800">
+                <Link to="/" className="flex items-center gap-2.5">
+                    <img
+                        src={logoImg}
+                        alt="Logo"
+                        className="h-10 w-auto object-contain shrink-0"
+                    />
+                    <div className="flex flex-col leading-tight">
+                        <span className="font-display text-xs font-bold text-signal">
+                            Pragya Shipping and Logistics
+                        </span>
+                        <span className="text-[9px] font-semibold text-orange-400">
+                            International Freight Forwarders
+                        </span>
+                        <span className="text-[9px] font-semibold text-orange-400">
+                            प्रज्ञा शिपिंग आणि लॉजिस्टिक्स
+                        </span>
+                    </div>
                 </Link>
-                <p className="text-slate-400 text-[11px] mt-1.5 tracking-wider uppercase font-semibold">Admin Portal</p>
+                <p className="text-slate-400 text-[10px] mt-2 tracking-wider uppercase font-semibold">Admin Portal</p>
             </div>
 
             <nav className="flex-1 py-4 px-3 space-y-1.5">

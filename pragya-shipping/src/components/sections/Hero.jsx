@@ -16,9 +16,14 @@ function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/40" />
 
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-28 pb-16 md:pb-24">
-                <p className="font-display text-signal text-xl md:text-3xl font-bold tracking-tight animate-fade-up">
-                    PRAGYA SHIPPING AND LOGISTICS
-                </p>
+                <div className="flex flex-col leading-tight mb-2 animate-fade-up">
+                    <p className="font-display text-signal text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
+                        Pragya Shipping and Logistics
+                    </p>
+                    <p className="text-xs sm:text-sm md:text-base font-semibold tracking-wider text-orange-400 mt-1">
+                        International Freight Forwarders • प्रज्ञा शिपिंग आणि लॉजिस्टिक्स
+                    </p>
+                </div>
 
                 <h1 className="font-display text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mt-3 max-w-3xl animate-fade-up-delay">
                     Goods move. Business grows.

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import logoImg from "../../assets/pragya-logo.png";
 
 export function Navbar() {
     const [open, setOpen] = useState(false);
@@ -30,13 +31,27 @@ export function Navbar() {
             }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16 md:h-20">
+                <div className="flex justify-between items-center h-20 md:h-24">
                     <a
                         href="#home"
-                        className="font-display text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-white flex items-center flex-wrap"
+                        className="flex items-center gap-2.5 sm:gap-3 py-1 group"
                     >
-                        <span>PRAGYA SHIPPING</span>
-                        <span className="text-signal ml-1.5 font-bold">AND LOGISTICS</span>
+                        <img
+                            src={logoImg}
+                            alt="Pragya Shipping and Logistics Logo"
+                            className="h-12 sm:h-14 md:h-16 w-auto object-contain shrink-0"
+                        />
+                        <div className="flex flex-col leading-tight">
+                            <span className="font-display text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-tight text-signal">
+                                Pragya Shipping and Logistics
+                            </span>
+                            <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-wider text-orange-400">
+                                International Freight Forwarders
+                            </span>
+                            <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-orange-400">
+                                प्रज्ञा शिपिंग आणि लॉजिस्टिक्स
+                            </span>
+                        </div>
                     </a>
 
                     <div className="hidden lg:flex items-center gap-7">

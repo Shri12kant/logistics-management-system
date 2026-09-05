@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import API_BASE_URL from "../api/config";
+import logoImg from "../assets/pragya-logo.png";
 
 function AdminLogin() {
     const navigate = useNavigate();
@@ -66,10 +67,24 @@ function AdminLogin() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(27,79,114,0.35),_transparent_55%)]" />
 
             <div className="relative w-full max-w-md">
-                <div className="text-center mb-8">
-                    <Link to="/" className="font-display text-lg sm:text-xl font-bold text-white block">
-                        <span>PRAGYA SHIPPING </span>
-                        <span className="text-signal">AND LOGISTICS</span>
+                <div className="text-center mb-6">
+                    <Link to="/" className="inline-flex flex-col items-center gap-2">
+                        <img
+                            src={logoImg}
+                            alt="Pragya Shipping and Logistics Logo"
+                            className="h-16 w-auto object-contain drop-shadow-md"
+                        />
+                        <div className="flex flex-col leading-tight text-center">
+                            <span className="font-display text-base sm:text-lg font-bold text-signal">
+                                Pragya Shipping and Logistics
+                            </span>
+                            <span className="text-xs font-semibold tracking-wider text-orange-400">
+                                International Freight Forwarders
+                            </span>
+                            <span className="text-xs font-semibold text-orange-400">
+                                प्रज्ञा शिपिंग आणि लॉजिस्टिक्स
+                            </span>
+                        </div>
                     </Link>
                     <div className="flex items-center justify-center gap-1.5 mt-2 text-white/60 text-xs tracking-wide uppercase font-semibold">
                         <svg className="w-3.5 h-3.5 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor">

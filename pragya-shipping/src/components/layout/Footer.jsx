@@ -1,13 +1,29 @@
 import { Link } from "react-router-dom";
+import logoImg from "../../assets/pragya-logo.png";
 
 function Footer() {
     return (
         <footer className="bg-ink-soft text-white pt-16 pb-8 border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div>
-                    <p className="font-display text-xl font-bold">
-                        PRAGYA SHIPPING <span className="text-signal">AND LOGISTICS</span>
-                    </p>
+                    <div className="flex items-center gap-3">
+                        <img
+                            src={logoImg}
+                            alt="Pragya Shipping and Logistics Logo"
+                            className="h-14 md:h-16 w-auto object-contain shrink-0"
+                        />
+                        <div className="flex flex-col leading-tight">
+                            <span className="font-display text-base font-bold text-signal">
+                                Pragya Shipping and Logistics
+                            </span>
+                            <span className="text-xs font-semibold tracking-wider text-orange-400">
+                                International Freight Forwarders
+                            </span>
+                            <span className="text-xs font-semibold text-orange-400">
+                                प्रज्ञा शिपिंग आणि लॉजिस्टिक्स
+                            </span>
+                        </div>
+                    </div>
                     <p className="text-white/50 mt-3 leading-relaxed text-sm">
                         Safe, reliable transportation across India — built for growing businesses.
                     </p>
