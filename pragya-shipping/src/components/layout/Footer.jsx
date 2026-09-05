@@ -61,9 +61,9 @@ function Footer() {
                         Services
                     </h3>
                     <ul className="mt-4 space-y-2 text-white/70 text-sm">
-                        <li>Road Transport</li>
-                        <li>Goods Delivery</li>
+                        <li>Road Transportation</li>
                         <li>Customs Clearance</li>
+                        <li>Ocean Freight</li>
                     </ul>
                 </div>
 

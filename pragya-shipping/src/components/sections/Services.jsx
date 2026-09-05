@@ -10,20 +10,20 @@ function Services() {
             )
         },
         {
-            title: "Goods Delivery",
-            description: "Commercial cargo handled carefully from origin pickup to final destination doorstep.",
+            title: "Customs Clearance",
+            description: "Seamless documentation, import-export regulatory compliance, duty assessment, and swift customs clearance across all ports.",
             icon: (
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
             )
         },
         {
-            title: "Customs Clearance",
-            description: "Seamless documentation, regulatory compliance, and swift customs clearance for consignments.",
+            title: "Ocean Freight",
+            description: "Global maritime cargo forwarding, full container (FCL) & consolidated (LCL) freight solutions across major trade lanes.",
             icon: (
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 15l2 3h14l2-3-4-8H7L3 15zM12 3v4m0 0l-3 3m3-3l3 3M2 20c2.5 1.5 5 1.5 7.5 0s5-1.5 7.5 0 5 1.5 7.5 0" />
                 </svg>
             )
         }
