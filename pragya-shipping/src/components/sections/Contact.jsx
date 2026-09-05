@@ -97,16 +97,25 @@ function Contact() {
 
                     <div className="mt-10 space-y-6 text-white/80">
                         <div>
-                            <p className="text-xs uppercase tracking-wider text-white/40 font-semibold">Address</p>
-                            <p className="mt-1">Mainpuri, Uttar Pradesh, India</p>
+                            <p className="text-xs uppercase tracking-wider text-signal font-bold">Office Address</p>
+                            <p className="mt-1.5 text-sm leading-relaxed text-white/90">
+                                Room No. 4611, Raigad Galli, Rupa Devi Pada No. 1, Rd. No. 33, Indira Nagar, Wagle Estate, Thane (W), Maharashtra - 400 604.
+                            </p>
                         </div>
                         <div>
-                            <p className="text-xs uppercase tracking-wider text-white/40 font-semibold">Phone</p>
-                            <p className="mt-1">+91 XXXXX XXXXX</p>
-                        </div>
-                        <div>
-                            <p className="text-xs uppercase tracking-wider text-white/40 font-semibold">Email</p>
-                            <p className="mt-1">info@pragyashipping.com</p>
+                            <p className="text-xs uppercase tracking-wider text-signal font-bold">Official Emails</p>
+                            <div className="mt-1.5 space-y-1 text-sm text-white/90">
+                                <p>
+                                    <a href="mailto:pragyashpng.log@gmail.com" className="hover:text-signal transition underline-offset-2 hover:underline">
+                                        pragyashpng.log@gmail.com
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="mailto:vijaydhr.dubey@gmail.com" className="hover:text-signal transition underline-offset-2 hover:underline">
+                                        vijaydhr.dubey@gmail.com
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

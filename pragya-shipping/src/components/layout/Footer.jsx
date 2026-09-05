@@ -8,9 +8,18 @@ function Footer() {
                     <p className="font-display text-xl font-bold">
                         PRAGYA SHIPPING <span className="text-signal">AND LOGISTICS</span>
                     </p>
-                    <p className="text-white/50 mt-4 leading-relaxed text-sm">
+                    <p className="text-white/50 mt-3 leading-relaxed text-sm">
                         Safe, reliable transportation across India — built for growing businesses.
                     </p>
+                    <div className="mt-4 space-y-2 text-xs text-white/60">
+                        <p className="leading-relaxed">
+                            <strong className="text-white/80">Office:</strong> Room No. 4611, Raigad Galli, Rupa Devi Pada No. 1, Rd. No. 33, Indira Nagar, Wagle Estate, Thane (W), Maharashtra - 400 604.
+                        </p>
+                        <p className="space-y-0.5">
+                            <strong className="text-white/80">Email:</strong>{" "}
+                            <a href="mailto:pragyashpng.log@gmail.com" className="hover:text-signal transition">pragyashpng.log@gmail.com</a>
+                        </p>
+                    </div>
                 </div>
 
                 <div>
