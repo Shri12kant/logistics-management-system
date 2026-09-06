@@ -186,8 +186,6 @@ function Contact() {
                                 <option value="Customs Clearance">Customs Clearance (CHA & Documentation)</option>
                                 <option value="Railway Freight">Railway Freight & Bulk Cargo</option>
                                 <option value="Project Cargo">Project Cargo & Heavy Lift</option>
-                                <option value="Air Freight">Air Freight Logistics</option>
-                                <option value="Warehousing & Storage">Warehousing & Storage</option>
                                 <option value="Other Logistics Services">Other Logistics Services</option>
                             </select>
                         </div>
