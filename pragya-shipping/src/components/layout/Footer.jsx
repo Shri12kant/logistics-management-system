@@ -33,7 +33,7 @@ function Footer() {
                         </p>
                         <p>
                             <strong className="text-white/80">Phone:</strong>{" "}
-                            <a href="tel:+919867189827" className="hover:text-signal transition">+91 98671 89827</a>
+                            <a href="tel:+919867189821" className="hover:text-signal transition">+91 98671 89821</a>
                         </p>
                         <p>
                             <strong className="text-white/80">Email:</strong>{" "}
