@@ -3,9 +3,9 @@ import aboutTruck from "../assets/About-truck.webp";
 
 function About() {
     const points = [
-        "Ocean & Air Freight Forwarding",
-        "Customs Clearance & Documentation Support",
-        "Project Cargo & Transportation Across India"
+        "Transportation Network",
+        "Door-to-Door Delivery & Last-Mile Connectivity",
+        "Customs Clearance & Documentation Support"
     ];
 
     return (
