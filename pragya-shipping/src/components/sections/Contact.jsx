@@ -11,7 +11,8 @@ function Contact() {
         email: "",
         serviceType: "",
         destinationPort: "",
-        message: ""
+        message: "",
+        botcheck: "" // 🍯 Honeypot anti-bot security field (invisible to humans)
     });
 
     const [loading, setLoading] = useState(false);
@@ -26,15 +27,24 @@ function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // 🛡️ 1. Anti-Bot Trap: If honeypot is filled by an automated bot, silently drop
+        if (formData.botcheck && formData.botcheck.trim() !== "") {
+            console.warn("Spam bot detected and blocked.");
+            toast.success("Quick Quote Request Sent Successfully 🚚");
+            return;
+        }
+
+        // 🛡️ 2. Strict Input Validation (Only genuine requests allowed)
         if (formData.name.trim().length < 2) {
-            return toast.error("Please enter your name");
+            return toast.error("Please enter your genuine name (min 2 characters)");
         }
 
-        if (!formData.subject.trim()) {
-            return toast.error("Please enter a subject");
+        if (formData.subject.trim().length < 2) {
+            return toast.error("Please enter a valid subject");
         }
 
-        if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(formData.email.trim())) {
             return toast.error("Please enter a valid email address");
         }
 
@@ -42,12 +52,12 @@ function Contact() {
             return toast.error("Please select the required service");
         }
 
-        if (!formData.destinationPort.trim()) {
+        if (formData.destinationPort.trim().length < 2) {
             return toast.error("Please enter destination port");
         }
 
         if (formData.message.trim().length < 5) {
-            return toast.error("Please enter your message or shipment details");
+            return toast.error("Please enter your message or shipment details (min 5 characters)");
         }
 
         try {
@@ -58,17 +68,37 @@ function Contact() {
             const payload = {
                 name: formData.name.trim(),
                 email: formData.email.trim(),
-                phoneNumber: "+91 9999999999",
+                phoneNumber: "+91 98671 89821",
                 serviceType: formData.serviceType,
                 message: combinedMessage
             };
 
-            await axios.post(
-                `${API_BASE_URL}/api/contact`,
-                payload
-            );
+            // 1. Save to Backend Database
+            try {
+                await axios.post(`${API_BASE_URL}/api/contact`, payload);
+            } catch (backendErr) {
+                console.warn("Backend logging:", backendErr);
+            }
 
-            toast.success("Quick Quote Request Sent Successfully 🚚");
+            // 2. Direct Email Notification to exp.sales@pragyashipping.in via Web3Forms
+            try {
+                await axios.post("https://api.web3forms.com/submit", {
+                    access_key: "62634346-628b-4b20-8e12-b258a69e7cf9", // Pragya Shipping access key
+                    from_name: `${formData.name.trim()} (Pragya Shipping Web Inquiry)`,
+                    subject: `New Quote Request: ${formData.subject.trim()} - ${formData.serviceType.trim()}`,
+                    replyto: formData.email.trim(),
+                    name: formData.name.trim(),
+                    email: formData.email.trim(),
+                    service_needed: formData.serviceType.trim(),
+                    destination_port: formData.destinationPort.trim(),
+                    message: formData.message.trim(),
+                    to_email: "exp.sales@pragyashipping.in"
+                });
+            } catch (emailErr) {
+                console.warn("Email alert dispatch:", emailErr);
+            }
+
+            toast.success("Quick Quote Request Sent Successfully 🚚 We will email you back shortly!");
 
             setFormData({
                 name: "",
@@ -76,16 +106,13 @@ function Contact() {
                 email: "",
                 serviceType: "",
                 destinationPort: "",
-                message: ""
+                message: "",
+                botcheck: ""
             });
 
         } catch (error) {
             console.error(error);
-            if (error.response?.data?.message) {
-                toast.error(error.response.data.message);
-            } else {
-                toast.error("Unable to submit quote request. Please try again.");
-            }
+            toast.error("Unable to submit quote request. Please try again or email us directly at exp.sales@pragyashipping.in");
         } finally {
             setLoading(false);
         }
@@ -135,12 +162,24 @@ function Contact() {
                     onSubmit={handleSubmit}
                     className="bg-white/[0.04] border border-white/10 text-white p-8 md:p-10 shadow-2xl rounded-2xl backdrop-blur-md"
                 >
+                    {/* 🍯 Invisible Honeypot field to trap spambots */}
+                    <input
+                        type="checkbox"
+                        name="botcheck"
+                        className="hidden"
+                        style={{ display: "none" }}
+                        checked={!!formData.botcheck}
+                        onChange={handleChange}
+                        tabIndex={-1}
+                        autoComplete="off"
+                    />
+
                     <div className="space-y-4">
                         <div>
                             <input
                                 type="text"
                                 name="name"
-                                placeholder="Your Name Here"
+                                placeholder="Your Name Here *"
                                 value={formData.name}
                                 onChange={handleChange}
                                 className="input-field-dark"
@@ -152,7 +191,7 @@ function Contact() {
                             <input
                                 type="text"
                                 name="subject"
-                                placeholder="Subject"
+                                placeholder="Subject *"
                                 value={formData.subject}
                                 onChange={handleChange}
                                 className="input-field-dark"
@@ -164,7 +203,7 @@ function Contact() {
                             <input
                                 type="email"
                                 name="email"
-                                placeholder="Email"
+                                placeholder="Email Address *"
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="input-field-dark"
@@ -194,7 +233,7 @@ function Contact() {
                             <input
                                 type="text"
                                 name="destinationPort"
-                                placeholder="Destination Port"
+                                placeholder="Destination Port *"
                                 value={formData.destinationPort}
                                 onChange={handleChange}
                                 className="input-field-dark"
@@ -206,7 +245,7 @@ function Contact() {
                             <textarea
                                 rows="4"
                                 name="message"
-                                placeholder="Your Message"
+                                placeholder="Your Message / Cargo Details *"
                                 value={formData.message}
                                 onChange={handleChange}
                                 className="input-field-dark resize-none"
