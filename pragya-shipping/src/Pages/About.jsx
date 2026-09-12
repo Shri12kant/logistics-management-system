@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import aboutTruck from "../assets/About-truck.webp";
+import trainContainer from "../assets/train-container.jpeg";
 
 function About() {
     const points = [
@@ -15,8 +15,8 @@ function About() {
                 <div className="relative">
                     <div className="absolute -inset-3 bg-signal/10 rounded-3xl -rotate-2" />
                     <img
-                        src={aboutTruck}
-                        alt="PRAGYA SHIPPING AND LOGISTICS Freight Forwarding"
+                        src={trainContainer}
+                        alt="PRAGYA SHIPPING AND LOGISTICS Train & Container Freight"
                         className="relative w-full rounded-2xl object-cover shadow-2xl aspect-[4/3] border border-white/10"
                     />
                 </div>
