@@ -64,12 +64,6 @@ export function Navbar() {
                                 {link.label}
                             </a>
                         ))}
-                        <Link
-                            to="/track"
-                            className="btn-primary text-sm !py-2 !px-4"
-                        >
-                            Track Shipment
-                        </Link>
                     </div>
 
                     <button
@@ -101,13 +95,6 @@ export function Navbar() {
                             {link.label}
                         </a>
                     ))}
-                    <Link
-                        to="/track"
-                        onClick={() => setOpen(false)}
-                        className="btn-primary w-full text-center block"
-                    >
-                        Track Shipment
-                    </Link>
                 </div>
             )}
         </nav>
