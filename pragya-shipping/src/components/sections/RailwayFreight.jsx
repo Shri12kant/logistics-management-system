@@ -50,10 +50,7 @@ function RailwayFreight() {
 
                     <div className="mt-9 flex flex-wrap gap-4">
                         <a href="#contact" className="btn-primary">
-                            Enquire for Rail Freight
-                        </a>
-                        <a href="#contact" className="btn-ghost">
-                            Request Quote
+                            Request a Quote
                         </a>
                     </div>
                 </div>
