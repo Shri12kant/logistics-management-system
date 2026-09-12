@@ -9,8 +9,8 @@ function WhyChooseUs() {
             description: "Strict schedule discipline. We plan optimized routes to consistently meet your delivery windows."
         },
         {
-            title: "Pan-India Reach",
-            description: "Connected freight lanes across major commercial cities, states, and economic hubs."
+            title: "Nationwide Delivery",
+            description: "Connected freight lanes across all major commercial cities, ports, and economic hubs in India."
         },
         {
             title: "Always Reachable",
