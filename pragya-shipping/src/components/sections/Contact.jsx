@@ -80,20 +80,31 @@ function Contact() {
                 console.warn("Backend logging:", backendErr);
             }
 
-            // 2. Direct Email Notification to exp.sales@pragyashipping.in via Web3Forms
+            // 2. Direct Email Notification via Web3Forms
             try {
-                await axios.post("https://api.web3forms.com/submit", {
-                    access_key: "62634346-628b-4b20-8e12-b258a69e7cf9", // Pragya Shipping access key
-                    from_name: `${formData.name.trim()} (Pragya Shipping Web Inquiry)`,
-                    subject: `New Quote Request: ${formData.subject.trim()} - ${formData.serviceType.trim()}`,
-                    replyto: formData.email.trim(),
-                    name: formData.name.trim(),
-                    email: formData.email.trim(),
-                    service_needed: formData.serviceType.trim(),
-                    destination_port: formData.destinationPort.trim(),
-                    message: formData.message.trim(),
-                    to_email: "exp.sales@pragyashipping.in"
-                });
+                const emailResponse = await axios.post(
+                    "https://api.web3forms.com/submit",
+                    {
+                        access_key: "1375b3a0-6cfd-424f-acc1-007d3310763e",
+                        from_name: `${formData.name.trim()} (Pragya Shipping Web Inquiry)`,
+                        subject: `New Quote Request: ${formData.subject.trim()} - ${formData.serviceType.trim()}`,
+                        name: formData.name.trim(),
+                        email: formData.email.trim(),
+                        subject_title: formData.subject.trim(),
+                        service_needed: formData.serviceType.trim(),
+                        destination_port: formData.destinationPort.trim(),
+                        message: formData.message.trim()
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        }
+                    }
+                );
+                if (emailResponse.data?.success) {
+                    console.log("Email notification dispatched successfully!");
+                }
             } catch (emailErr) {
                 console.warn("Email alert dispatch:", emailErr);
             }
