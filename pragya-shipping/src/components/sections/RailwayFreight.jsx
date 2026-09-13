@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import trainCargo from "../../assets/traincargo.jpg";
+import trainContainer from "../../assets/train-container.jpeg";
 
 function RailwayFreight() {
     const railHighlights = [
@@ -59,7 +59,7 @@ function RailwayFreight() {
                 <div className="order-1 lg:order-2 relative">
                     <div className="absolute -inset-3 bg-signal/15 rounded-3xl rotate-2" />
                     <img
-                        src={trainCargo}
+                        src={trainContainer}
                         alt="Railway freight cargo transportation by PRAGYA SHIPPING AND LOGISTICS"
                         className="relative w-full rounded-2xl object-cover shadow-2xl aspect-[4/3] border border-white/10"
                     />
