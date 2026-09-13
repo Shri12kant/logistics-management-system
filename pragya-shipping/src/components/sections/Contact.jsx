@@ -80,12 +80,12 @@ function Contact() {
                 console.warn("Backend logging:", backendErr);
             }
 
-            // 2. Direct Email Notification via Web3Forms
+            // 2. Direct Email Notification via Web3Forms (Official Pragya Shipping)
             try {
                 const emailResponse = await axios.post(
                     "https://api.web3forms.com/submit",
                     {
-                        access_key: "1375b3a0-6cfd-424f-acc1-007d3310763e",
+                        access_key: "59da4f5d-c41f-4383-a87c-d186b42b6627",
                         from_name: `${formData.name.trim()} (Pragya Shipping Web Inquiry)`,
                         subject: `New Quote Request: ${formData.subject.trim()} - ${formData.serviceType.trim()}`,
                         name: formData.name.trim(),
