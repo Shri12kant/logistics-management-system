@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import truckImg from "../assets/truck.webp";
+import truckImg from "../assets/truck.jpg";
 
 function About() {
     const points = [
