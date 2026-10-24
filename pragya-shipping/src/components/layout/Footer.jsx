@@ -52,6 +52,7 @@ function Footer() {
                         <li><a href="#railway" className="hover:text-signal transition">Railway</a></li>
                         <li><a href="#services" className="hover:text-signal transition">Services</a></li>
                         <li><a href="#mission" className="hover:text-signal transition">Mission & Projects</a></li>
+                        <li><a href="#faq" className="hover:text-signal transition">FAQ</a></li>
                         <li><a href="#contact" className="hover:text-signal transition">Contact</a></li>
                     </ul>
                 </div>

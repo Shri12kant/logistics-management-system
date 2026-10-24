@@ -6,6 +6,7 @@ import Services from "../components/sections/Services.jsx";
 import Mission from "../components/sections/Mission.jsx";
 import WhyChooseUs from "../components/sections/WhyChooseUs.jsx";
 import WorkingProcess from "../components/sections/WorkingProcess.jsx";
+import FAQ from "../components/sections/FAQ.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import Footer from "../components/layout/Footer.jsx";
 
@@ -20,6 +21,7 @@ function Home() {
             <Mission />
             <WhyChooseUs />
             <WorkingProcess />
+            <FAQ />
             <Contact />
             <Footer />
         </div>
