@@ -62,11 +62,11 @@ function App() {
                 />
 
 
-                {/* ================= TRACK SHIPMENT (PUBLIC) ================= */}
+                {/* ================= TRACK SHIPMENT (REDIRECT) ================= */}
 
                 <Route
                     path="/track"
-                    element={<TrackShipment />}
+                    element={<Navigate to="/" replace />}
                 />
 
 

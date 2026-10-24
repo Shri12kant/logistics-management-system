@@ -17,8 +17,8 @@ function FAQ() {
             answer: "You can request an instant quote by filling out our online 'Request a Quick Quote' form with your cargo details, weight, and destination port. Alternatively, you can email your shipment specifications directly to exp.sales@pragyashipping.in or call our operations desk at +91 98671 89821."
         },
         {
-            question: "Can I track my consignment and shipment status online?",
-            answer: "Yes, every booked consignment receives a dedicated tracking reference number (e.g. PRG100...). You can enter this tracking ID anytime on our 'Track Shipment' portal to view real-time transit milestones, current location status, and estimated delivery dates."
+            question: "What documents are required for customs clearance and freight forwarding?",
+            answer: "Standard commercial shipping documents include Commercial Invoice, Packing List, Bill of Lading (BL) or Air Waybill (AWB), Import Export Code (IEC), and Shipping Bill or Bill of Entry. Our experienced customs clearance team assists clients with full document verification, HSN classification, and regulatory compliance at ports and air cargo terminals."
         },
         {
             question: "What capabilities do you offer for Project Cargo and Over-Dimensional Cargo (ODC)?",

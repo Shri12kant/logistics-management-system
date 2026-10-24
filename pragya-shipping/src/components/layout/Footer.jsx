@@ -73,7 +73,6 @@ function Footer() {
                         Tools & Links
                     </h3>
                     <ul className="mt-4 space-y-2 text-white/70 text-sm">
-                        <li><Link to="/track" className="hover:text-signal transition">Track Shipment</Link></li>
                         <li><a href="#contact" className="hover:text-signal transition">Request A Quote</a></li>
                         <li><Link to="/admin/login" className="hover:text-signal transition">Admin Portal</Link></li>
                     </ul>
