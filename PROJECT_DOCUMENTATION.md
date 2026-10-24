@@ -28,7 +28,7 @@
 | **Official Live Domain** | `https://www.pragyashipping.in` | Main customer-facing website with SSL (HTTPS) |
 | **Root Domain Redirect** | `https://pragyashipping.in` | Automatically redirects to `www.pragyashipping.in` |
 | **Render Web App** | `https://pragya-shipping-web.onrender.com` | Frontend hosting server (Auto-deploy from GitHub `main`) |
-| **Render Backend API** | `https://pragya-shipping-backend.onrender.com` | Express/Node.js REST API & MongoDB connection |
+| **Render Backend API** | `https://pragya-shipping-backend.onrender.com` | Java Spring Boot REST API & MySQL connection |
 | **Shipment Tracking** | `https://www.pragyashipping.in/track` | Public tracking lookup for customer consignments |
 | **Quote Calculator** | `https://www.pragyashipping.in/quote` | Instant freight rate estimation tool |
 | **Admin Portal** | `https://www.pragyashipping.in/admin/login` | Secure management dashboard for inquiries & shipments |
@@ -45,8 +45,8 @@ graph TD
     CloudflareDNS --> Frontend[React 19 + Vite Frontend]
     Frontend -->|Quote Request Email| Web3Forms[Web3Forms API]
     Web3Forms -->|Instant Email Notification| BusinessInbox[exp.sales@pragyashipping.in]
-    Frontend -->|REST API Requests| Backend[Node.js / Express Backend on Render]
-    Backend -->|Database Storage| MongoDB[MongoDB Atlas Database]
+    Frontend -->|REST API Requests| Backend[Java 17 / Spring Boot Backend on Render]
+    Backend -->|Spring Data JPA| MySQL[MySQL Cloud Database]
     Admin[Business Admin] -->|Login & Manage| AdminPanel[Admin Dashboard]
     AdminPanel --> Backend
 ```
@@ -60,10 +60,11 @@ graph TD
 - **Icons & Visuals:** Inline SVG icons + 100% royalty-free, unbranded ultra-HD logistics photography
 
 ### Backend (`pragyashipping`)
-- **Runtime:** Node.js (ES Modules)
-- **Server:** Express.js
-- **Database:** MongoDB Atlas with Mongoose ODM
-- **Security:** JWT (JSON Web Tokens), Bcrypt password hashing, Helmet, CORS whitelist, anti-bot honeypot
+- **Language & Framework:** Java 17, Spring Boot 4.x
+- **Modules:** Spring WebMVC, Spring Data JPA, Spring Security, Spring Validation
+- **Database:** MySQL with `mysql-connector-j` and Hibernate ORM
+- **Security:** Stateless JWT (`io.jsonwebtoken` JJWT 0.13.0), BCrypt password hashing, custom `LoginRateLimiterService`, and `InputSanitizer`
+- **Payment Integration:** Razorpay Java SDK (`razorpay-java:1.4.8`)
 
 ---
 
@@ -71,7 +72,7 @@ graph TD
 
 ```text
 Pragya Shipping/
-├── PROJECT_DOCUMENTATION.md       <-- This Master Documentation File
+├── PROJECT_DOCUMENTATION.md       <-- Master Documentation File
 ├── pragya-shipping/               <-- FRONTEND REACT APPLICATION
 │   ├── public/
 │   │   └── pragya-logo.png        <-- Favicon & brand icon
@@ -116,14 +117,38 @@ Pragya Shipping/
 │   │   └── index.css              <-- Global typography, colors, animations
 │   └── package.json
 │
-└── pragyashipping/                <-- BACKEND NODE/EXPRESS SERVER
-    ├── config/
-    │   └── db.js                  <-- MongoDB connection logic
-    ├── controllers/               <-- Business logic for contacts, shipments, auth
-    ├── models/                    <-- Mongoose Schemas (Admin, Contact, Shipment, Rate)
-    ├── routes/                    <-- REST API Endpoints
-    ├── server.js                  <-- Express entrypoint
-    └── package.json
+└── pragyashipping/                <-- BACKEND JAVA SPRING BOOT APPLICATION
+    ├── pom.xml                    <-- Maven Dependencies & Build Configuration
+    ├── src/main/java/com/example/PragyaShipping/
+    │   ├── PragyashippingApplication.java <-- Spring Boot Main Entrypoint
+    │   ├── config/
+    │   │   ├── SecurityConfig.java         <-- Spring Security & JWT Filter Chain
+    │   │   └── ApiExceptionHandler.java    <-- Global REST Error Handling
+    │   ├── controller/
+    │   │   ├── ContactController.java      <-- Inquiries & Quote endpoints
+    │   │   ├── ShipmentController.java     <-- Real-time tracking endpoints
+    │   │   ├── AdminController.java        <-- Admin auth & dashboard endpoints
+    │   │   └── PaymentController.java      <-- Razorpay payment handlers
+    │   ├── service/
+    │   │   ├── ContactService.java
+    │   │   ├── ShipmentService.java
+    │   │   ├── AdminService.java
+    │   │   └── PaymentService.java
+    │   ├── repository/
+    │   │   ├── ContactRepository.java      <-- Spring Data JPA Repositories
+    │   │   ├── ShipmentRepository.java
+    │   │   ├── AdminRepository.java
+    │   │   └── PaymentRepository.java
+    │   ├── entity/
+    │   │   ├── Contact.java                <-- JPA Entities (@Entity, @Table)
+    │   │   ├── Shipment.java
+    │   │   ├── Admin.java
+    │   │   └── Payment.java
+    │   └── security/
+    │       ├── JwtService.java             <-- JJWT Token generation & validation
+    │       ├── JwtAuthenticationFilter.java<-- Bearer Token Interceptor
+    │       └── LoginRateLimiterService.java<-- Anti-Brute Force Protection
+    └── Dockerfile
 ```
 
 ---
@@ -154,17 +179,10 @@ When a customer submits the **"Request a Quick Quote"** form on the website:
 
 1. **Anti-Bot Check:** The form includes an invisible Honeypot field (`botcheck`). If automated spambots attempt to spam the form, the submission is silently dropped without sending spam emails.
 2. **Input Validation:** Name (min 2 chars), Email (strict RFC regex), Subject, Service, Destination Port, and Message (min 5 chars) are verified.
-3. **Database Backup:** The inquiry is automatically logged to the MongoDB database for record keeping.
+3. **Database Backup:** The inquiry is automatically logged to MySQL database via Spring Boot for record keeping.
 4. **Instant Email Delivery:** Web3Forms dispatches an email notification with full inquiry details directly to:
    - **Recipient:** `exp.sales@pragyashipping.in`
    - **Access Key:** `59da4f5d-c41f-4383-a87c-d186b42b6627`
-
-### How to Change the Recipient Email in Future:
-If the company ever wants quote emails to go to a new or additional email address:
-1. Visit [https://web3forms.com](https://web3forms.com) and enter the new email address to generate a new Access Key.
-2. Open `pragya-shipping/src/components/sections/Contact.jsx`.
-3. Update line 88 with the new `access_key`.
-4. Run `git add .`, `git commit -m "Update email key"`, `git push origin main`.
 
 ---
 
@@ -214,7 +232,6 @@ git add .
 git commit -m "Describe your update here (e.g., update phone number or text)"
 git push origin main
 ```
-*That's it! Render detects the commit and deploys the new version automatically.*
 
 ---
 
@@ -243,9 +260,6 @@ git push origin main
 ### Q4: GoDaddy par Domain Renewal ki date kab aayegi?
 - GoDaddy account me jakar **Billing / Subscriptions** check karein. Hamesha domain ka **Auto-Renew ON** rakhein taaki domain kabhi expire na ho.
 
-### Q5: Admin password bhool gaye toh kya karein?
-- Backend me `pragyashipping/models/Admin.js` me password Bcrypt hashed hota hai. Naya admin add karne ke liye MongoDB Atlas database me direct update ya backend register route use kar sakte hain.
-
 ---
 
 ## 10. Important Credentials & Keys Summary
@@ -253,7 +267,7 @@ git push origin main
 | Item | Value / Location | Notes |
 | :--- | :--- | :--- |
 | **Domain Registrar** | GoDaddy Account | Manages DNS A & CNAME records |
-| **Hosting Platform** | Render.com Dashboard | Manages Web & Backend Node services |
+| **Hosting Platform** | Render.com Dashboard | Manages Web & Backend Java services |
 | **GitHub Repository** | `Shri12kant/logistics-management-system` | Source code repository |
 | **Web3Forms Key** | `59da4f5d-c41f-4383-a87c-d186b42b6627` | Quotes forwarded to `exp.sales@pragyashipping.in` |
 | **Render A Record IP** | `216.24.57.1` | GoDaddy A Record for root domain |

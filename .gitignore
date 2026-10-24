@@ -32,3 +32,6 @@ target/
 *.njsproj
 *.sln
 *.sw?
+
+# Private Local Interview Notes
+INTERVIEW_PREPARATION_GUIDE.md
