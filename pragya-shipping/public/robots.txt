@@ -3,4 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin/*
 
+Sitemap: https://pragyashipping.in/sitemap.xml
 Sitemap: https://www.pragyashipping.in/sitemap.xml
