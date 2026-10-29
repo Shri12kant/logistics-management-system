@@ -62,10 +62,10 @@ export const servicesData = {
         subtitle: "Licensed Customs Brokerage & Fast Import-Export Documentation in Mumbai & JNPT",
         heroBadge: "Custom House Agent (CHA)",
         metaTitle: "Customs Clearance Agent CHA JNPT Mumbai | Import Export Broker | Pragya Shipping",
-        metaDescription: "Expert Customs Clearance (CHA) services at JNPT Nhava Sheva, Mumbai Port & Air Cargo Complex. Fast Bill of Entry, Shipping Bill, ICEGATE filing, HSN duty assessment & cargo inspection.",
+        metaDescription: "Expert Customs Clearance (CHA) services at JNPT Nhava Sheva & Mumbai Port. Fast Bill of Entry, Shipping Bill, ICEGATE filing, HSN duty assessment & cargo inspection.",
         shortDesc: "Expert customs brokerage and CHA documentation services. We handle Bill of Entry, Shipping Bills, HSN classification, customs duty assessment, regulatory compliance, and swift physical examination.",
         overview: [
-            "Navigating Indian customs regulations requires deep technical expertise, rigorous documentation standards, and on-ground presence. Pragya Shipping and Logistics provides comprehensive Customs House Agent (CHA) and customs brokerage services across JNPT (Nhava Sheva), Mumbai Port, and Mumbai Air Cargo Complex (BOM).",
+            "Navigating Indian customs regulations requires deep technical expertise, rigorous documentation standards, and on-ground presence. Pragya Shipping and Logistics provides comprehensive Customs House Agent (CHA) and customs brokerage services across JNPT (Nhava Sheva), Mumbai Port, and major inland CFS facilities.",
             "Our licensed customs clearance team handles end-to-end statutory compliance, filing electronic documentation directly into ICEGATE, calculating exact customs tariff duties under appropriate HSN codes, and liaising with port customs officers to prevent detention and demurrage charges.",
             "From routine commercial cargo to complex project import schemes (EPCG, Advance Authorization, Drawback claims), we ensure error-free documentation and lightning-fast out-of-charge (OOC) clearances."
         ],
@@ -87,7 +87,7 @@ export const servicesData = {
             "Commercial Invoice with detailed itemized description",
             "Packing List with gross, net weights, and dimensions",
             "Import Export Code (IEC) of the consignee / shipper",
-            "Bill of Lading (B/L) or Airway Bill (AWB)",
+            "Bill of Lading (B/L)",
             "GATT / DGFT Declaration Form",
             "Certificate of Origin & Product Literature (for technical items)",
             "Authorised Dealer (AD) Code Registration Letter"
@@ -95,7 +95,6 @@ export const servicesData = {
         gatewayPorts: [
             "JNPT (Jawaharlal Nehru Port) / Nhava Sheva Customs",
             "Mumbai Port Trust (MBPT) Docks & Bunders",
-            "Sahar Air Cargo Complex (ACC), Mumbai Airport (BOM)",
             "Major Container Freight Stations (CFSs) in Dronagiri, Uran, and Panvel"
         ],
         faqs: [
@@ -277,62 +276,6 @@ export const servicesData = {
             {
                 q: "Do you provide on-site crane positioning at the factory foundation?",
                 a: "Yes. Our turnkey service covers factory-to-foundation positioning utilizing heavy telescopic cranes, hydraulic strand jacks, and skidding systems to safely install machinery onto civil plinths."
-            }
-        ]
-    },
-
-    "air-freight": {
-        slug: "air-freight",
-        title: "Air Freight Forwarding",
-        subtitle: "Express International & Domestic Air Cargo via Mumbai Airport (BOM)",
-        heroBadge: "Time-Critical Air Cargo",
-        metaTitle: "Air Freight Forwarder Mumbai Airport BOM | Express Air Cargo | Pragya Shipping",
-        metaDescription: "Fast international and domestic air freight forwarding via Mumbai International Airport (BOM). Express customs clearance, IATA airline space booking & temperature-controlled logistics.",
-        shortDesc: "Time-critical and high-value cargo transport via major air cargo hubs including Mumbai International Airport (BOM). Fast transit schedules, airline space booking, and express clearance.",
-        overview: [
-            "When delivery deadlines cannot wait for maritime transit times, air freight is the vital lifeline for high-value machinery spares, pharmaceuticals, electronics, and priority commercial cargo. Pragya Shipping and Logistics provides fast, reliable international air cargo forwarding through Mumbai's Chhatrapati Shivaji Maharaj International Airport (BOM).",
-            "We maintain active allocations with leading international cargo carriers and scheduled airlines, guaranteeing priority space boarding even during peak seasonal rush periods.",
-            "Our dedicated air freight desk handles immediate airport customs clearance at Sahar Air Cargo Complex, secure palletization, hazardous goods (DG) compliance, and direct airport-to-door expedited delivery."
-        ],
-        keyCapabilities: [
-            "International Air Freight (Standard, Priority Express, and Deferred Consolidated)",
-            "Direct Operations at Sahar Air Cargo Complex (ACC), Mumbai Airport (BOM)",
-            "IATA Airline Network space bookings with Emirates, Qatar Airways, Lufthansa, Air India, and Singapore Airlines",
-            "Express Airport Customs Clearance (Round-the-clock examination and Out of Charge)",
-            "Temperature-Controlled Cargo & Cold Chain packaging for life sciences and pharmaceuticals",
-            "Door-to-Airport and Door-to-Door expedited global courier and cargo options"
-        ],
-        highlights: [
-            { title: "Same-Day / Next-Flight Dispatch", desc: "Immediate cargo processing and airline handover for urgent consignments." },
-            { title: "24/7 Airport Team", desc: "Licensed customs and handling personnel stationed directly inside Sahar Cargo Complex." },
-            { title: "Global Airport Reach", desc: "Direct and single-transit flights reaching Europe, USA, Middle East, and Asia within 24-48 hours." },
-            { title: "Secure Dangerous Goods Handling", desc: "Certified IATA Dangerous Goods (DGR) packaging, labeling, and declaration compliance." }
-        ],
-        documentation: [
-            "Air Waybill (AWB) - Master Air Waybill (MAWB) & House Air Waybill (HAWB)",
-            "Commercial Invoice and Certified Packing List",
-            "Shipper's Declaration for Dangerous Goods (DGR) if applicable",
-            "MSDS (Material Safety Data Sheet) for chemical and battery products",
-            "Certificate of Origin & Customs Export Shipping Bill / Import Bill of Entry"
-        ],
-        gatewayPorts: [
-            "Chhatrapati Shivaji Maharaj International Airport (BOM), Mumbai",
-            "Indira Gandhi International Airport (DEL), New Delhi",
-            "Bengaluru International Airport (BLR)",
-            "Connecting over 220+ international destination airports globally"
-        ],
-        faqs: [
-            {
-                q: "How is air freight cost calculated?",
-                a: "Air freight charges are based on 'Chargeable Weight', which is the higher value between actual gross weight (in kg) and volumetric weight (calculated as Length × Width × Height in cm ÷ 6000 under IATA standards)."
-            },
-            {
-                q: "Can you transport hazardous chemicals or lithium batteries by air?",
-                a: "Yes. Our team handles IATA Dangerous Goods (DG) shipments, ensuring appropriate UN-certified packaging, hazard labels, and valid Shipper's Declaration documentation."
-            },
-            {
-                q: "How fast is customs clearance at Mumbai Air Cargo Complex?",
-                a: "For routine commercial shipments with complete pre-arrival documentation, air cargo customs clearance at Mumbai Airport is typically accomplished within 4 to 8 hours of flight touchdown."
             }
         ]
     }

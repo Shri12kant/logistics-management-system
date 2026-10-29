@@ -18,7 +18,7 @@ function Services() {
             slug: "customs-clearance",
             title: "Customs Clearance (CHA)",
             subtitle: "Fast Port Clearance & Import-Export Documentation",
-            description: "Expert customs brokerage and CHA documentation services. We handle Bill of Entry, Shipping Bills, HSN classification, customs duty assessment, regulatory compliance, and swift physical examination at ports and air cargo complexes.",
+            description: "Expert customs brokerage and CHA documentation services. We handle Bill of Entry, Shipping Bills, HSN classification, customs duty assessment, regulatory compliance, and swift physical examination at ports and container freight stations (CFS).",
             tags: ["Customs Broker", "Bill of Entry", "Duty Assessment", "Port Clearance"],
             icon: (
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
@@ -59,18 +59,6 @@ function Services() {
             icon: (
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-            )
-        },
-        {
-            slug: "air-freight",
-            title: "Air Freight Forwarding",
-            subtitle: "Express International & Domestic Air Cargo",
-            description: "Time-critical and high-value cargo transport via major air cargo hubs including Mumbai International Airport (BOM). Fast transit schedules, airline space booking, express customs clearance, and temperature-controlled options.",
-            tags: ["Express Transit", "Airport Customs", "BOM Air Cargo", "Door-to-Airport"],
-            icon: (
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
             )
         }

@@ -6,7 +6,7 @@ function FAQ() {
     const faqs = [
         {
             question: "What logistics and freight forwarding services do you provide in Mumbai & Thane?",
-            answer: "Pragya Shipping and Logistics provides comprehensive multimodal logistics solutions across India. Our core services include Ocean Freight (FCL and LCL container cargo via JNPT / Mumbai port), Customs Clearance & CHA documentation, Road Transportation (Full Truck Load & Part Truck Load), Railway Freight via Dedicated Freight Corridors (DFC), Air Freight, and specialized Project Cargo (ODC heavy lift)."
+            answer: "Pragya Shipping and Logistics provides comprehensive multimodal logistics solutions across India. Our core services include Ocean Freight (FCL and LCL container cargo via JNPT / Mumbai port), Customs Clearance & CHA documentation, Road Transportation (Full Truck Load & Part Truck Load), Railway Freight via Dedicated Freight Corridors (DFC), and specialized Project Cargo (ODC heavy lift)."
         },
         {
             question: "Do you handle customs clearance and container movements at JNPT (Nhava Sheva) & Mumbai Port?",
@@ -18,7 +18,7 @@ function FAQ() {
         },
         {
             question: "What documents are required for customs clearance and freight forwarding?",
-            answer: "Standard commercial shipping documents include Commercial Invoice, Packing List, Bill of Lading (BL) or Air Waybill (AWB), Import Export Code (IEC), and Shipping Bill or Bill of Entry. Our experienced customs clearance team assists clients with full document verification, HSN classification, and regulatory compliance at ports and air cargo terminals."
+            answer: "Standard commercial shipping documents include Commercial Invoice, Packing List, Bill of Lading (BL), Import Export Code (IEC), and Shipping Bill or Bill of Entry. Our experienced customs clearance team assists clients with full document verification, HSN classification, and regulatory compliance at maritime ports and inland container depots."
         },
         {
             question: "What capabilities do you offer for Project Cargo and Over-Dimensional Cargo (ODC)?",

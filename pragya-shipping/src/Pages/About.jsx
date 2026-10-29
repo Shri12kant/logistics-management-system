@@ -30,7 +30,7 @@ function About() {
                         Pragya Shipping and Logistics Started in 2021 in Mumbai, and Pragya Shipping and Logistics is a trusted freight forwarding company in India located in Mumbai and deliver across all the major cities in India.
                     </p>
                     <p className="mt-4 text-white/75 leading-relaxed text-base">
-                        The company specializes in Ocean & Air freight forwarding, custom clearance, Project Cargo and transportation. We have a reputation of delivering professional service with personalized touch. Our vast & varied experience in the freight forwarding industry enables us to cater to the specific requirements of our customers at all the times.
+                        The company specializes in Ocean freight forwarding, customs clearance, Project Cargo and road-rail transportation. We have a reputation of delivering professional service with personalized touch. Our vast & varied experience in the freight forwarding industry enables us to cater to the specific requirements of our customers at all the times.
                     </p>
 
                     <ul className="mt-8 space-y-3.5">
