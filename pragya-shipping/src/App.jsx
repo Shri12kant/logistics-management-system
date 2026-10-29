@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import Home from "./Pages/Home";
+import ServiceDetail from "./Pages/ServiceDetail";
 import Admin from "./Pages/Admin";
 import AdminLogin from "./Pages/AdminLogin";
 import AdminDashboard from "./Pages/AdminDashboard";
@@ -12,6 +13,7 @@ import AdminShipments from "./Pages/AdminShipments";
 import AdminPayments from "./Pages/AdminPayments";
 import AdminChangePassword from "./Pages/AdminChangePassword";
 import AdminRates from "./Pages/AdminRates";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 import "./App.css";
 
@@ -35,6 +37,7 @@ function App() {
     return (
 
         <BrowserRouter>
+            <ScrollToTop />
 
             <Toaster
                 position="top-right"
@@ -59,6 +62,13 @@ function App() {
                 <Route
                     path="/"
                     element={<Home />}
+                />
+
+                {/* ================= SERVICE DETAIL PAGES ================= */}
+
+                <Route
+                    path="/services/:slug"
+                    element={<ServiceDetail />}
                 />
 
 

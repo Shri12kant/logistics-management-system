@@ -13,14 +13,14 @@ export function Navbar() {
     }, []);
 
     const links = [
-        { href: "#home", label: "Home" },
-        { href: "#about", label: "About" },
-        { href: "#railway", label: "Railway" },
-        { href: "#services", label: "Services" },
-        { href: "#mission", label: "Mission & Projects" },
-        { href: "#process", label: "Process" },
-        { href: "#faq", label: "FAQ" },
-        { href: "#contact", label: "Contact" }
+        { href: "/#home", label: "Home" },
+        { href: "/#about", label: "About" },
+        { href: "/#railway", label: "Railway" },
+        { href: "/#services", label: "Services" },
+        { href: "/#mission", label: "Mission & Projects" },
+        { href: "/#process", label: "Process" },
+        { href: "/#faq", label: "FAQ" },
+        { href: "/#contact", label: "Contact" }
     ];
 
     return (
@@ -34,7 +34,7 @@ export function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20 md:h-24">
                     <a
-                        href="#home"
+                        href="/#home"
                         className="flex items-center gap-2.5 sm:gap-3 py-1 group"
                     >
                         <img

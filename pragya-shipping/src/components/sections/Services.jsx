@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 function Services() {
     const services = [
         {
+            slug: "ocean-freight",
             title: "Ocean Freight Forwarding",
             subtitle: "FCL / LCL Container Cargo via JNPT & Mumbai Port",
             description: "End-to-end global maritime cargo forwarding. We provide competitive full container load (FCL) and consolidated less-than-container (LCL) freight solutions across major global trade lanes, with seamless port drayage and customs coordination.",
@@ -12,6 +15,7 @@ function Services() {
             )
         },
         {
+            slug: "customs-clearance",
             title: "Customs Clearance (CHA)",
             subtitle: "Fast Port Clearance & Import-Export Documentation",
             description: "Expert customs brokerage and CHA documentation services. We handle Bill of Entry, Shipping Bills, HSN classification, customs duty assessment, regulatory compliance, and swift physical examination at ports and air cargo complexes.",
@@ -23,6 +27,7 @@ function Services() {
             )
         },
         {
+            slug: "road-transport",
             title: "Road Transportation",
             subtitle: "Full Truck Load (FTL) & Container Trailers Across India",
             description: "High-reliability interstate and regional freight transportation with modern commercial trailers. Full Truck Load (FTL) and Part Truck Load (PTL) coverage across major industrial hubs, ports, and inland container depots.",
@@ -34,6 +39,7 @@ function Services() {
             )
         },
         {
+            slug: "railway-freight",
             title: "Railway Freight Corridors",
             subtitle: "Dedicated Freight Corridors (DFC) & Bulk Rakes",
             description: "High-capacity, cost-effective rail logistics moving bulk raw materials and containerized rakes. Direct port rail connectivity linking Western & Eastern Dedicated Freight Corridors to inland depots with lower freight costs.",
@@ -45,6 +51,7 @@ function Services() {
             )
         },
         {
+            slug: "project-cargo",
             title: "Project Cargo & Heavy Lift",
             subtitle: "Over-Dimensional Cargo (ODC) & Industrial Machinery",
             description: "Specialized engineering logistics for heavy transformers, infrastructure machinery, and over-dimensional loads (ODC). We perform precision route feasibility surveys, arrange multi-axle hydraulic trailers, and secure RTO transit permits.",
@@ -56,6 +63,7 @@ function Services() {
             )
         },
         {
+            slug: "air-freight",
             title: "Air Freight Forwarding",
             subtitle: "Express International & Domestic Air Cargo",
             description: "Time-critical and high-value cargo transport via major air cargo hubs including Mumbai International Airport (BOM). Fast transit schedules, airline space booking, express customs clearance, and temperature-controlled options.",
@@ -100,15 +108,34 @@ function Services() {
                                 </p>
                             </div>
 
-                            <div className="mt-6 pt-5 border-t border-white/10 flex flex-wrap gap-2">
-                                {service.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="text-[11px] font-medium bg-white/[0.06] text-white/80 px-2.5 py-1 rounded-md"
+                            <div>
+                                <div className="mt-6 pt-5 border-t border-white/10 flex flex-wrap gap-2">
+                                    {service.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="text-[11px] font-medium bg-white/[0.06] text-white/80 px-2.5 py-1 rounded-md"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
+                                    <Link
+                                        to={`/services/${service.slug}`}
+                                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-signal hover:text-white transition-colors group/link"
                                     >
-                                        {tag}
-                                    </span>
-                                ))}
+                                        <span>View Details & Specifications</span>
+                                        <svg
+                                            className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </Link>
+                                </div>
                             </div>
                         </article>
                     ))}
