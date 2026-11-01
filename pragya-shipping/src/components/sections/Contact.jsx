@@ -15,6 +15,7 @@ function Contact() {
         botcheck: "" // 🍯 Honeypot anti-bot security field (invisible to humans)
     });
 
+    const [agreed, setAgreed] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
@@ -58,6 +59,10 @@ function Contact() {
 
         if (formData.message.trim().length < 5) {
             return toast.error("Please enter your message or shipment details (min 5 characters)");
+        }
+
+        if (!agreed) {
+            return toast.error("Please agree to the Privacy Policy & Terms to proceed");
         }
 
         try {
@@ -265,10 +270,33 @@ function Contact() {
                         </div>
                     </div>
 
+                    {/* DPDP Act 2023 Required Consent Checkbox */}
+                    <div className="mt-5 flex items-start gap-3 text-left bg-white/[0.02] p-3 rounded-lg border border-white/5">
+                        <input
+                            type="checkbox"
+                            id="dpdpConsent"
+                            checked={agreed}
+                            onChange={(e) => setAgreed(e.target.checked)}
+                            className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/10 text-signal focus:ring-signal focus:ring-offset-ink cursor-pointer accent-signal shrink-0"
+                            required
+                        />
+                        <label htmlFor="dpdpConsent" className="text-xs text-white/70 leading-relaxed cursor-pointer select-none">
+                            I agree to the{" "}
+                            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-signal hover:underline font-medium">
+                                Privacy Policy
+                            </a>{" "}
+                            and{" "}
+                            <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-signal hover:underline font-medium">
+                                Terms of Service
+                            </a>
+                            , and consent to Pragya Shipping processing my contact details for this logistics inquiry under the DPDP Act 2023. <span className="text-signal font-bold">*</span>
+                        </label>
+                    </div>
+
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`w-full mt-6 py-3.5 font-bold transition flex items-center justify-center gap-2 ${
+                        className={`w-full mt-5 py-3.5 font-bold transition flex items-center justify-center gap-2 ${
                             loading
                                 ? "bg-gray-400 text-gray-700 cursor-not-allowed"
                                 : "btn-primary"
@@ -286,14 +314,6 @@ function Contact() {
                             "Request A Quick Quote"
                         )}
                     </button>
-
-                    <p className="text-[11px] text-white/50 text-center mt-3.5 leading-relaxed">
-                        🛡️ By submitting, you agree to our{" "}
-                        <a href="/privacy-policy" className="text-signal hover:underline">
-                            Privacy Policy
-                        </a>{" "}
-                        and consent to our team contacting you strictly regarding this logistics inquiry under the DPDP Act 2023.
-                    </p>
                 </form>
             </div>
         </section>
