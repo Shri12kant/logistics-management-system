@@ -3,6 +3,8 @@ import { Toaster } from "react-hot-toast";
 
 import Home from "./Pages/Home";
 import ServiceDetail from "./Pages/ServiceDetail";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TermsConditions from "./Pages/TermsConditions";
 import Admin from "./Pages/Admin";
 import AdminLogin from "./Pages/AdminLogin";
 import AdminDashboard from "./Pages/AdminDashboard";
@@ -85,6 +87,18 @@ function App() {
                 <Route
                     path="/quote"
                     element={<QuoteCalculator />}
+                />
+
+                {/* ================= LEGAL & COMPLIANCE (DPDP ACT) ================= */}
+
+                <Route
+                    path="/privacy-policy"
+                    element={<PrivacyPolicy />}
+                />
+
+                <Route
+                    path="/terms"
+                    element={<TermsConditions />}
                 />
 
 

@@ -70,19 +70,32 @@ function Footer() {
 
                 <div>
                     <h3 className="font-display font-bold text-sm tracking-wider uppercase text-white/40">
-                        Tools & Links
+                        Legal & Compliance
                     </h3>
                     <ul className="mt-4 space-y-2 text-white/70 text-sm">
-                        <li><a href="#contact" className="hover:text-signal transition">Request A Quote</a></li>
-                        <li><Link to="/admin/login" className="hover:text-signal transition">Admin Portal</Link></li>
+                        <li><Link to="/privacy-policy" className="hover:text-signal transition">Privacy Policy (DPDP)</Link></li>
+                        <li><Link to="/terms" className="hover:text-signal transition">Terms & Conditions</Link></li>
+                        <li><Link to="/quote" className="hover:text-signal transition">Freight Calculator</Link></li>
+                        <li><Link to="/admin/login" className="hover:text-signal transition text-white/40 text-xs">Admin Login</Link></li>
                     </ul>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 mt-14 pt-6 border-t border-white/10">
-                <p className="text-center text-white/35 text-sm">
+            <div className="max-w-7xl mx-auto px-6 mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
+                <p>
                     © 2026 PRAGYA SHIPPING AND LOGISTICS. All rights reserved.
                 </p>
+                <div className="flex items-center gap-6">
+                    <Link to="/privacy-policy" className="hover:text-signal transition">
+                        Privacy Policy
+                    </Link>
+                    <span>•</span>
+                    <Link to="/terms" className="hover:text-signal transition">
+                        Terms of Service
+                    </Link>
+                    <span>•</span>
+                    <span className="text-white/30">DPDP Act (2023) Compliant</span>
+                </div>
             </div>
         </footer>
     );

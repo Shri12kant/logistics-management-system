@@ -179,6 +179,13 @@ function QuoteCalculator() {
                                     <p className="text-white/45 text-xs">
                                         Razorpay test mode until live keys are added. UPI / card / netbanking.
                                     </p>
+                                    <p className="text-white/40 text-[11px] pt-1">
+                                        Protected under the DPDP Act 2023. Data processed strictly for billing under our{" "}
+                                        <Link to="/privacy-policy" className="text-signal hover:underline">
+                                            Privacy Policy
+                                        </Link>
+                                        .
+                                    </p>
                                 </div>
                             </div>
                         )}

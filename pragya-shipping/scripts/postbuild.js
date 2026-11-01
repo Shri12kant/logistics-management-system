@@ -46,6 +46,16 @@ const routes = [
         path: "services/project-cargo",
         title: "Project Cargo & ODC Heavy Lift Forwarding Mumbai | Pragya Shipping",
         description: "Specialized Project Cargo & Over-Dimensional Cargo (ODC) handling. Multi-axle hydraulic trailers, route feasibility surveys, RTO permits, factory to foundation delivery."
+    },
+    {
+        path: "privacy-policy",
+        title: "Privacy Policy & DPDP Act Compliance | Pragya Shipping and Logistics",
+        description: "Official Privacy Policy and Data Protection Notice of Pragya Shipping and Logistics under the Digital Personal Data Protection Act, 2023 (India)."
+    },
+    {
+        path: "terms",
+        title: "Terms & Conditions of Service | Pragya Shipping and Logistics",
+        description: "Commercial freight forwarding, customs clearance (CHA), and multimodal transportation terms of service for Pragya Shipping and Logistics."
     }
 ];
 

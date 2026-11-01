@@ -286,6 +286,14 @@ function Contact() {
                             "Request A Quick Quote"
                         )}
                     </button>
+
+                    <p className="text-[11px] text-white/50 text-center mt-3.5 leading-relaxed">
+                        🛡️ By submitting, you agree to our{" "}
+                        <a href="/privacy-policy" className="text-signal hover:underline">
+                            Privacy Policy
+                        </a>{" "}
+                        and consent to our team contacting you strictly regarding this logistics inquiry under the DPDP Act 2023.
+                    </p>
                 </form>
             </div>
         </section>
